@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="top">
+    <h3>KPOP용어 테스트</h3>
+  </div>
+
+
+  <!-- 시작 페이지 -->
+  <div id="start_area" class="flex">
+    <div id="start_container">
+      <img id="start_img" src="banner.jpg" alt="">
+      <h1>KPOP용어 테스트</h1>
+      <h5>본인의 kpop 오타쿠 레벨은?</h5>
+      <button id="start_button">시작하기</button>
+    </div>
+  </div>
+
+
+  <!-- 문제 페이지 -->
+  <div id="question_area">
+    <div id="time">
+      <progress max="100" value="70"> 70% </progress>
+    </div>
+
+
+    <div id="question">
+      문제는
+    </div>
+
+
+    <div id="buttons">
+      <button>1</button>
+      <button>1</button>
+      <button>1</button>
+      <button>1</button>
+    </div>
+  </div>
+
+
+  <script>
+    const startButton=document.querySelector('#start_button');
+    const order=0;
+
+    const answerList=['1번 답','2번 답','3번 답','4번 답']
+    const questions={
+      0:{
+        question:'1+1은?',
+        0:'안녕?ㅎㅎ',
+        1:'안녕?ㅋㅋ',
+        2:'안녕?ㅠㅠ',
+        3:'안녕?ㅋㅋ',
+        answer:'2입니다'
+      },
+      1:{
+        question:'2+2는?',
+        0:'바이?ㅎㅎ',
+        1:'바이?ㅋㅋ',
+        2:'바이?ㅠㅠ',
+        3:'바이?ㅋㅋ',
+        answer:'4입니다'
+      }
+    }
+    startButton.addEventListener('click',event=>{
+      document.querySelector('#start_area').style.display="none";
+      document.querySelector('#question_area').style.display="block";
+
+      document.querySelector("#question").innerHTML=questions[order].question;
+      
+
+      
+      // 버튼 만드는 코드
+      // for (var i = 0; i < answerList.length; i++) {
+      //     var btn = document.createElement("button");
+      //     var t = document.createTextNode(questions[order][i]);
+      //     btn.appendChild(t);
+      //     document.getElementById("buttons").appendChild(btn);
+      // }
+      
+    });
+
+
+
+
+    
+  </script>
+
+</body>
+</html>
