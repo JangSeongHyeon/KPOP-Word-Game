@@ -62,3 +62,13 @@ button{
 }
 
 
+/* result area */
+#result_area{
+  display: none;
+  text-align: center;
+}
+
+#result_img{
+  width: 200px;
+}
+

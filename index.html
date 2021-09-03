@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div id="top">
     <h3>KPOP용어 테스트</h3>
@@ -32,65 +34,269 @@
 
 
     <div id="question">
-      문제는
+      <p id="question_line"></p>
     </div>
 
 
     <div id="buttons">
-      <button>1</button>
-      <button>1</button>
-      <button>1</button>
-      <button>1</button>
+      <button class="answer_button">1</button>
+      <button class="answer_button">2</button>
+      <button class="answer_button">3</button>
+      <button class="answer_button">4</button>
+    </div>
+  </div>
+
+  
+  <!-- 결과 페이지 -->
+  <div id="result_area">
+    <h1 id="result_title">초kpop오타쿠</h1>
+    <img id="result_img" src="./LV5.jpg" alt="">
+    <p>당신은 초초초 kpop 오타쿠 입니다!</p>
+    <h5>오타쿠 레벨</h5>
+    <progress id="result_progress" max="100" value="70"> 70% </progress>
+    <div>
+      <button id="replay_button">재도전!</button>
     </div>
   </div>
 
 
   <script>
-    const startButton=document.querySelector('#start_button');
-    const order=0;
+    const startButton = document.querySelector('#start_button');
+    const answerButton1 = document.getElementsByClassName("answer_button")[0];
+    answerButton1.addEventListener('click', next);
 
-    const answerList=['1번 답','2번 답','3번 답','4번 답']
-    const questions={
-      0:{
-        question:'1+1은?',
-        0:'안녕?ㅎㅎ',
-        1:'안녕?ㅋㅋ',
-        2:'안녕?ㅠㅠ',
-        3:'안녕?ㅋㅋ',
-        answer:'2입니다'
+    const answerButton2 = document.getElementsByClassName("answer_button")[1];
+    answerButton2.addEventListener('click', next);
+
+    const answerButton3 = document.getElementsByClassName("answer_button")[2];
+    answerButton3.addEventListener('click', next);
+
+    const answerButton4 = document.getElementsByClassName("answer_button")[3];
+    answerButton4.addEventListener('click', next);
+
+    const replayButton=document.querySelector('#replay_button');
+    replayButton.addEventListener('click',replay);
+
+
+    let order = 0;
+    let score = 0;
+
+
+
+    const questions = {
+      0: {
+        question: '1+1은?',
+        0: '안녕?ㅎㅎ',
+        1: '안녕?ㅅㅂ',
+        2: '안녕?ㅠㅠ',
+        3: '정답',
+        answer: '정답'
       },
-      1:{
-        question:'2+2는?',
-        0:'바이?ㅎㅎ',
-        1:'바이?ㅋㅋ',
-        2:'바이?ㅠㅠ',
-        3:'바이?ㅋㅋ',
-        answer:'4입니다'
-      }
+      1: {
+        question: '2+2는?',
+        0: '바이?ㅎㅎ',
+        1: '바이?ㅋㅋ',
+        2: '바이?ㅠㅠ',
+        3: '정답',
+        answer: '정답'
+      },
+      2: {
+        question: '3+3는?',
+        0: '하앍?ㅎㅎ',
+        1: '하앍?ㅋㅋ',
+        2: '하앍?ㅠㅠ',
+        3: '정답',
+        answer: '정답'
+      },
+      3: {
+        question: '4+4는?',
+        0: '철구?ㅎㅎ',
+        1: '철구?ㅋㅋ',
+        2: '철구?ㅠㅠ',
+        3: '정답',
+        answer: '정답'
+      },
+      4: {
+        question: '5+5는?',
+        0: '김대중?ㅎㅎ',
+        1: '김대중?ㅋㅋ',
+        2: '김대중?ㅠㅠ',
+        3: '정답',
+        answer: '정답'
+      },
+      5: {
+        question: '6+6는?',
+        0: '노무현?ㅎㅎ',
+        1: '노무현?ㅋㅋ',
+        2: '노무현?ㅠㅠ',
+        3: '정답',
+        answer: '정답'
+      },
+      6: {
+        question: '7+7는?',
+        0: '멜렁?ㅎㅎ',
+        1: '멜렁?ㅋㅋ',
+        2: '멜렁?ㅠㅠ',
+        3: '정답',
+        answer: '정답'
+      },
+      7: {
+        question: '7+7는?',
+        0: '정답',
+        1: '푸룽',
+        2: '푸룽?ㅠㅠ',
+        3: '푸룽푸룽',
+        answer: '정답'
+      },
+      8: {
+        question: '7+7는?',
+        0: '꿀꿀',
+        1: '꿀꿀?ㅋㅋ',
+        2: '정답',
+        3: '꿀꿀',
+        answer: '정답'
+      },
+      9: {
+        question: '7+7는?',
+        0: '안뇨옹?ㅎㅎ',
+        1: '정답',
+        2: '안뇨옹?ㅠㅠ',
+        3: '안뇨옹',
+        answer: '정답'
+      },
+      10: {
+        question: '10+10는?',
+        0: '하위?ㅎㅎ',
+        1: '하위?ㅋㅋ',
+        2: '정답',
+        3: '하위',
+        answer: '정답'
+      },
+      11: {
+        question: '10+10는?',
+        0: '하위?ㅎㅎ',
+        1: '하위?ㅋㅋ',
+        2: '정답',
+        3: '하위',
+        answer: '정답'
+      },
+      12: {
+        question: '10+10는?',
+        0: '하위?ㅎㅎ',
+        1: '하위?ㅋㅋ',
+        2: '정답',
+        3: '하위',
+        answer: '정답'
+      },
+      13: {
+        question: '10+10는?',
+        0: '하위?ㅎㅎ',
+        1: '하위?ㅋㅋ',
+        2: '정답',
+        3: '하위',
+        answer: '정답'
+      },
+      14: {
+        question: '10+10는?',
+        0: '하위?ㅎㅎ',
+        1: '하위?ㅋㅋ',
+        2: '정답',
+        3: '하위',
+        answer: '정답'
+      },
+      15: {
+        question: '10+10는?',
+        0: '하위?ㅎㅎ',
+        1: '하위?ㅋㅋ',
+        2: '정답',
+        3: '하위',
+        answer: '정답'
+      },
     }
-    startButton.addEventListener('click',event=>{
-      document.querySelector('#start_area').style.display="none";
-      document.querySelector('#question_area').style.display="block";
 
-      document.querySelector("#question").innerHTML=questions[order].question;
-      
 
+    // 시작버튼 리스너
+    startButton.addEventListener('click', event => {
+      document.querySelector('#start_area').style.display = "none";
+      document.querySelector('#question_area').style.display = "block";
       
-      // 버튼 만드는 코드
-      // for (var i = 0; i < answerList.length; i++) {
-      //     var btn = document.createElement("button");
-      //     var t = document.createTextNode(questions[order][i]);
-      //     btn.appendChild(t);
-      //     document.getElementById("buttons").appendChild(btn);
-      // }
-      
+      showViews();
     });
 
 
 
 
+
+    // 보기버튼에 내용 뿌리기
+    function showViews() {
+      if (order > 15) {
+        console.log('게임 끝');
+        showResults();
+      } else {
+        document.getElementById('question_line').innerHTML=questions[order]['question'];
+        for (var i = 0; i < 4; i++) {
+          document.getElementsByClassName('answer_button')[i].innerHTML = questions[order][i];
+        }
+      }
+    }
+
+
+
+    // 다음페이지로 가기
+    function next(event) {
+      if (event.target.textContent == questions[order].answer) {
+        score += 1;
+        console.log('점수', score);
+      }
+
+
+
+      order++;
+      showViews();
+    }
+  
+  
+    function showResults(){
+      document.querySelector('#question_area').style.display = "none";
+      document.querySelector('#result_area').style.display = "block";
+
+      if(score>=13){
+        document.getElementById("result_img").src = "LV5.jpg";
+        document.getElementById("result_title").innerHTML="초KPOP오타쿠"
+        document.getElementById("result_progress").value="100";
+        
+        
+      }else if(score>=10){
+        document.getElementById("result_img").src = "LV4.jpg";
+        document.getElementById("result_title").innerHTML="KPOP매니아"
+        document.getElementById("result_progress").value="80";
+      }else if(score>=6){
+        document.getElementById("result_img").src = "LV3.jpg";
+        document.getElementById("result_title").innerHTML="KPOP중급자"
+        document.getElementById("result_progress").value="60";
+      }else if(score>=3){
+        document.getElementById("result_img").src = "LV2.png";
+        document.getElementById("result_title").innerHTML="KPOP초급자"
+        document.getElementById("result_progress").value="40";
+      }else{
+        document.getElementById("result_img").src = "LV1.png";
+        document.getElementById("result_title").innerHTML="KPOP린이"
+        document.getElementById("result_progress").value="20";
+      }
+      
+    }
+  
     
+    function replay(){
+      document.querySelector('#start_area').style.display = "block";
+      document.querySelector('#result_area').style.display = "none";
+      score=0;
+      order=0;
+    }
+  
+  
   </script>
 
 </body>
+
 </html>
