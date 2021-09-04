@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="jp">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" />
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  <audio id='audio_play' src='./bgm.mp3'></audio>
+  <audio id='click_play' src='./click.mp3'></audio>  
   <div id="top">
-    <h3>KPOP용어 테스트</h3>
+    <h3>KPOP用語テスト</h3>
   </div>
 
 
@@ -19,19 +22,22 @@
   <div id="start_area" class="flex">
     <div id="start_container">
       <img id="start_img" src="main.jpg" alt="">
-      <h1>KPOP용어 테스트</h1>
-      <h5 id="start_explain">본인의 kpop 오타쿠 레벨은?</h5>
-      <button id="start_button">시작하기</button>
+      <h1>KPOP用語テスト</h1>
+      <h5 id="start_explain">自分のKPOPレベルは？</h5>
+      <button id="start_button">はじめる</button>
     </div>
   </div>
 
 
   <!-- 문제 페이지 -->
+  
+
   <div id="question_area">
+    <progress id="question_progress" value="100" max="100"></progress>
     <span id="q-number"></span>
     <span id="q10"> / Q10</span>
     <div id="question">
-      
+      <img id="question_img" src="" alt="">
       <p id="question_line"></p>
     </div>
 
@@ -59,9 +65,12 @@
 
 
   <script>
+    var bgmaudio = document.getElementById('audio_play'); 
+    var clickaudio=document.getElementById('click_play');
     const startButton = document.querySelector('#start_button');
     const answerButton1 = document.getElementsByClassName("answer_button")[0];
     answerButton1.addEventListener('click', next);
+    
 
     const answerButton2 = document.getElementsByClassName("answer_button")[1];
     answerButton2.addEventListener('click', next);
@@ -78,29 +87,33 @@
 
     let order = 0;
     let score = 0;
+    let timer=100;
+    let myvar;
+    let timerbar=document.getElementById("question_progress");
 
 
 
     const questions = {
       0: {
-        question: '1+1은?',
-        0: '안녕?ㅎㅎ',
-        1: '정답',
-        2: '안녕?ㅠㅠ',
-        answer: '정답'
+        question: 'Vの出身地はどこでしょうか？',
+        0: 'ソウル',
+        1: '大邱（てぐ）',
+        2: '釜山（ぷさん）',
+        answer: '大邱（てぐ）'
       },
       1: {
-        question: '2+2는?',
-        0: '정답',
-        1: '바이?ㅋㅋ',
-        2: '바이?ㅠㅠ',
-        answer: '정답'
+        question: 'アジア最大の音楽授賞式「MAMA」にてBTSが初めて大賞を受賞したのは何年ですか？',
+        0: '2016年',
+        1: '2017年',
+        2: '2018年',
+        answer: '2016年'
       },
       2: {
         question: '3+3는?',
         0: '정답',
         1: '하앍?ㅋㅋ',
         2: '하앍?ㅠㅠ',
+        img:'./jm.JPG',
         answer: '정답'
       },
       3: {
@@ -115,6 +128,7 @@
         0: '김대중?ㅎㅎ',
         1: '김대중?ㅋㅋ',
         2: '정답',
+        img:'./v.JPG',
         answer: '정답'
       },
       5: {
@@ -136,6 +150,7 @@
         0: '푸룽',
         1: '정답',
         2: '푸룽?ㅠㅠ',
+        img:'./rm.JPG',
         answer: '정답'
       },
       8: {
@@ -159,7 +174,8 @@
     startButton.addEventListener('click', event => {
       document.querySelector('#start_area').style.display = "none";
       document.querySelector('#question_area').style.display = "block";
-      
+      document.querySelector('#top').style.display="none";
+      bgmaudio.play(); 
       showViews();
     });
 
@@ -175,8 +191,29 @@
       } else {
         document.getElementById('question_line').innerHTML=questions[order]['question'];
         document.getElementById('q-number').innerHTML='Q'+(order+1);
+        timerbar.style.setProperty("--c", "#B0F7FF");
+        
+        let counter=100;
+        myvar=setInterval(frame,1000);
+        
+
+        timerbar.value=100;
         for (var i = 0; i < 3; i++) {
           document.getElementsByClassName('answer_button')[i].innerHTML = questions[order][i];
+        }
+        
+        function frame(){
+          if (counter <= 0) {
+                clearInterval(myvar);
+                order++;
+                showViews();
+            } else {
+                if(counter<80){
+                  timerbar.style.setProperty("--c", "#FFA887");
+                }
+                counter=counter-10;
+                timerbar.value=counter;
+            }
         }
       }
     }
@@ -185,6 +222,8 @@
 
     // 다음페이지로 가기
     function next(event) {
+      clickaudio.play();
+      clearInterval(myvar);
       if (event.target.textContent == questions[order].answer) {
         score += 1;
         console.log('점수', score);
@@ -229,7 +268,14 @@
       order=0;
     }
   
-  
+
+    // 무한재생
+    bgmaudio.addEventListener('ended', function() { 
+        this.currentTime = 0;
+        this.play();
+    }, false);
+    
+
   </script>
 
 </body>
