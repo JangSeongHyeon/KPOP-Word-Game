@@ -1,8 +1,18 @@
 h3, body{
   margin: 0 0 0 0;
   color: #212529;
-  font-family: "Mplus 1p";
+  font-family: "M PLUS 1p";
+  
 }
+
+button{
+  font-family: "M PLUS 1p";
+}
+
+.nico{
+  font-family: 'Nico Moji';
+}
+
 
 
 #top{
@@ -54,7 +64,12 @@ h3, body{
 
 
 /* question page */
-
+#question_img{
+  width: 450px;
+  height: 250px;
+  display: none;
+  margin: 0 auto;
+}
 
 #q-number{
   color: #2196f3;
@@ -75,6 +90,7 @@ h3, body{
 #question_area{
   display: none;
   text-align: center;
+  margin-top: 15px;
 }
 
 #question{
@@ -171,6 +187,7 @@ progress {
 
 #question_progress{
   width: 80%;
+  margin-top: 5px;
 }
 
 progress::-moz-progress-bar {
@@ -190,6 +207,9 @@ progress::-webkit-progress-bar {
     background: transparent;
 }
 
+#result_progress{
+  margin-top: 0px;
+}
 #result_progress::-webkit-progress-value {  
   border-radius: 12px;
   background: #51FFA6;

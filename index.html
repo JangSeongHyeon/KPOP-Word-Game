@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -14,7 +15,7 @@
   <audio id='audio_play' src='./bgm.mp3'></audio>
   <audio id='click_play' src='./click.mp3'></audio>  
   <div id="top">
-    <h3>KPOP用語テスト</h3>
+    <h3 class="nico">BTS ARMY テスト</h3>
   </div>
 
 
@@ -22,7 +23,7 @@
   <div id="start_area" class="flex">
     <div id="start_container">
       <img id="start_img" src="main.jpg" alt="">
-      <h1>KPOP用語テスト</h1>
+      <h1 class="nico">BTS ARMY テスト</h1>
       <h5 id="start_explain">自分のKPOPレベルは？</h5>
       <button id="start_button">はじめる</button>
     </div>
@@ -33,6 +34,7 @@
   
 
   <div id="question_area">
+    <img src="./timer.png" alt="" width="50px" height="50px">
     <progress id="question_progress" value="100" max="100"></progress>
     <span id="q-number"></span>
     <span id="q10"> / Q10</span>
@@ -53,13 +55,14 @@
   
   <!-- 결과 페이지 -->
   <div id="result_area">
-    <h2 id="result_title">초kpop오타쿠</h1>
-    <p id="result_explain">당신은 초초초 kpop 오타쿠 입니다!</p>
+    <h2 id="result_title" class="nico"></h1>
+    
     <img id="result_img" src="./LV5.jpg" alt="">
-    <h2>오타쿠 레벨</h2>
+    <h2 class="nico">ARMY レベル</h2>
     <progress id="result_progress" value="50" max="100"></progress>
+    <p id="result_explain"></p>
     <div>
-      <button id="replay_button">재도전!</button>
+      <button id="replay_button">再挑戦！</button>
     </div>
   </div>
 
@@ -109,63 +112,63 @@
         answer: '2016年'
       },
       2: {
-        question: '3+3는?',
-        0: '정답',
-        1: '하앍?ㅋㅋ',
-        2: '하앍?ㅠㅠ',
+        question: 'これは誰？',
+        0: 'SUGA',
+        1: 'JUNGKOOK',
+        2: 'JIMIN',
         img:'./jm.JPG',
-        answer: '정답'
+        answer: 'JIMIN'
       },
       3: {
-        question: '4+4는?',
-        0: '철구?ㅎㅎ',
-        1: '정답',
-        2: '철구?ㅠㅠ',
-        answer: '정답'
+        question: '常に努力することを忘れないJIMINは、何の虫と呼ばれているでしょうか？',
+        0: '練習',
+        1: 'ダンス',
+        2: '努力',
+        answer: '練習'
       },
       4: {
-        question: '5+5는?',
-        0: '김대중?ㅎㅎ',
-        1: '김대중?ㅋㅋ',
-        2: '정답',
+        question: 'これは誰？',
+        0: 'V',
+        1: 'J-HOPE',
+        2: 'RM',
         img:'./v.JPG',
-        answer: '정답'
+        answer: 'V'
       },
       5: {
-        question: '6+6는?',
-        0: '정답',
-        1: '노무현?ㅋㅋ',
-        2: '노무현?ㅠㅠ',
-        answer: '정답'
+        question: '寝ることが好きなことで有名なSUGAですが、そんな彼が得意なスポーツは何でしょうか？',
+        0: 'バドミントン',
+        1: 'サッカー',
+        2: 'バスケットボール',
+        answer: 'バスケットボール'
       },
       6: {
-        question: '7+7는?',
-        0: '멜렁?ㅎㅎ',
-        1: '멜렁?ㅋㅋ',
-        2: '정답',
-        answer: '정답'
+        question: 'RMと誕生日が同じメンバーは誰？',
+        0: 'SUGA',
+        1: 'JUNGKOOK',
+        2: 'V',
+        answer: 'JUNGKOOK'
       },
       7: {
-        question: '8+8는?',
-        0: '푸룽',
-        1: '정답',
-        2: '푸룽?ㅠㅠ',
+        question: 'これは誰？',
+        0: 'J-HOPE',
+        1: 'JIN',
+        2: 'RM',
         img:'./rm.JPG',
-        answer: '정답'
+        answer: 'RM'
       },
       8: {
-        question: '9+9는?',
-        0: '꿀꿀',
-        1: '꿀꿀?ㅋㅋ',
-        2: '정답',
-        answer: '정답'
+        question: '2017年2月18日から12月10日まで行った「2017 BTS Live Trilogy Episode III: The Wings Tour」でJUNGKOOKがパフォーマンスしたソロ曲は何でしょうか？',
+        0: 'Begin',
+        1: 'Euphoria',
+        2: 'My Time',
+        answer: 'Begin'
       },
       9: {
-        question: '9.5+9.5는?',
-        0: '안뇨옹?ㅎㅎ',
-        1: '정답',
-        2: '안뇨옹?ㅠㅠ',
-        answer: '정답'
+        question: 'J-HOPEは自己紹介の時、「僕はあなたの○○、あなたは僕の○○」というフレーズを言います。○○に入る共通の言葉は何でしょうか？',
+        0: '癒し',
+        1: '希望',
+        2: '情熱',
+        answer: '希望'
       },
     }
 
@@ -192,6 +195,20 @@
         document.getElementById('question_line').innerHTML=questions[order]['question'];
         document.getElementById('q-number').innerHTML='Q'+(order+1);
         timerbar.style.setProperty("--c", "#B0F7FF");
+
+        if(order==2){
+          document.getElementById('question_img').src=questions[order]['img'];
+          document.getElementById('question_img').style.display='block'; 
+          
+        }else if(order==4){ 
+          document.getElementById('question_img').src=questions[order]['img'];
+          document.getElementById('question_img').style.display='block'; 
+        }else if(order==7){
+          document.getElementById('question_img').src=questions[order]['img'];
+          document.getElementById('question_img').style.display='block'; 
+        }else{
+          document.getElementById('question_img').style.display='none';
+        }
         
         let counter=100;
         myvar=setInterval(frame,1000);
@@ -242,20 +259,24 @@
 
       if(score>=9){
         document.getElementById("result_img").src = "LV5.jpg";
-        document.getElementById("result_title").innerHTML="초KPOP오타쿠"
+        document.getElementById("result_title").innerHTML="LV4.ARMY"
         document.getElementById("result_progress").value="100";
+        document.getElementById("result_explain").innerHTML="あなたはLV4のARMYです"
       }else if(score>=7){
         document.getElementById("result_img").src = "LV4.jpg";
-        document.getElementById("result_title").innerHTML="KPOP매니아"
+        document.getElementById("result_title").innerHTML="LV3.ARMY"
         document.getElementById("result_progress").value="80";
+        document.getElementById("result_explain").innerHTML="あなたはLV3のARMYです"
       }else if(score>=5){
         document.getElementById("result_img").src = "LV3.jpg";
-        document.getElementById("result_title").innerHTML="KPOP중급자"
+        document.getElementById("result_title").innerHTML="L24.ARMY"
         document.getElementById("result_progress").value="60";
+        document.getElementById("result_explain").innerHTML="あなたはLV2のARMYです"
       }else{
         document.getElementById("result_img").src = "LV1.png";
-        document.getElementById("result_title").innerHTML="KPOP린이"
+        document.getElementById("result_title").innerHTML="LV1.ARMY"
         document.getElementById("result_progress").value="20";
+        document.getElementById("result_explain").innerHTML="あなたはLV1のARMYです"
       }
       
     }
@@ -263,6 +284,7 @@
     
     function replay(){
       document.querySelector('#start_area').style.display = "block";
+      document.querySelector('#top').style.display="block";
       document.querySelector('#result_area').style.display = "none";
       score=0;
       order=0;
