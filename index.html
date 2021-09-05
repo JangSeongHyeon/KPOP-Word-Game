@@ -41,6 +41,7 @@
     <div id="question">
       <img id="question_img" src="" alt="">
       <p id="question_line"></p>
+      <p id="question_line2">この人は誰？</p>
     </div>
 
 
@@ -199,14 +200,22 @@
         if(order==2){
           document.getElementById('question_img').src=questions[order]['img'];
           document.getElementById('question_img').style.display='block';     
+          document.getElementById('question_line').style.display='none';
+          document.getElementById('question_line2').style.display='block';
         }else if(order==4){ 
           document.getElementById('question_img').src=questions[order]['img'];
           document.getElementById('question_img').style.display='block'; 
+          document.getElementById('question_line').style.display='none';
+          document.getElementById('question_line2').style.display='block';
         }else if(order==7){
           document.getElementById('question_img').src=questions[order]['img'];
           document.getElementById('question_img').style.display='block'; 
+          document.getElementById('question_line').style.display='none';
+          document.getElementById('question_line2').style.display='block';
         }else{
           document.getElementById('question_img').style.display='none';
+          document.getElementById('question_line').style.display='block';
+          document.getElementById('question_line2').style.display='none';
         }
         
         let counter=100;
@@ -222,7 +231,7 @@
           if (counter <= 0) {
                 clearInterval(myvar);
                 order++;
-                showViews();
+                // showViews();
             } else {
                 if(counter<80){
                   timerbar.style.setProperty("--c", "#FFA887");
