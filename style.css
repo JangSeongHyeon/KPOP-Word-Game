@@ -233,6 +233,10 @@ progress::-webkit-progress-bar {
     height: 50px;
     font-size:15px;
   }
+  
+  #replay_button{
+    font-size:15px;
+  }
 
   #question{
     width: 300px;
