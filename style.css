@@ -93,9 +93,6 @@ button{
   margin-top: 15px;
 }
 
-#question_line{
-  line-height: 250px;
-}
 
 #question_line2{
   display: none;
@@ -104,7 +101,6 @@ button{
 #question{
   width: 800px;
   height: 300px;
-  padding-top: 5px;
   overflow: hidden;
   font-size: 20px;
   border-radius: 15px;
