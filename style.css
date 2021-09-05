@@ -94,7 +94,9 @@ button{
 }
 
 #question{
-  width: 70%;
+  width: 800px;
+  height: 400px;
+  overflow: hidden;
   font-size: 20px;
   border-radius: 15px;
   margin: 0 auto;
@@ -223,9 +225,5 @@ progress::-webkit-progress-bar {
     height: 50px;
   }
 
-  #question_img{
-    width: 50%;
-    height: 150px;
-  }
   
 }
