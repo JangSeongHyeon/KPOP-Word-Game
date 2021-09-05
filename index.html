@@ -14,6 +14,7 @@
 <body>
   <audio id='audio_play' src='./bgm.mp3'></audio>
   <audio id='click_play' src='./click.mp3'></audio>  
+  <audio id='timer_play' src="./timer.MP3"></audio>
   <div id="top">
     <h3 class="nico">BTS ARMY テスト</h3>
   </div>
@@ -71,6 +72,7 @@
   <script>
     var bgmaudio = document.getElementById('audio_play'); 
     var clickaudio=document.getElementById('click_play');
+    var timeraudio=document.getElementById('timer_play');
     const startButton = document.querySelector('#start_button');
     const answerButton1 = document.getElementsByClassName("answer_button")[0];
     answerButton1.addEventListener('click', next);
@@ -193,6 +195,7 @@
         console.log('게임 끝');
         showResults();
       } else {
+        timeraudio.pause();
         document.getElementById('question_line').innerHTML=questions[order]['question'];
         document.getElementById('q-number').innerHTML='Q'+(order+1);
         timerbar.style.setProperty("--c", "#B0F7FF");
@@ -231,10 +234,11 @@
           if (counter <= 0) {
                 clearInterval(myvar);
                 order++;
-                // showViews();
+                showViews();
             } else {
-                if(counter<80){
+                if(counter<70){
                   timerbar.style.setProperty("--c", "#FFA887");
+                  timeraudio.play();
                 }
                 counter=counter-10;
                 timerbar.value=counter;
@@ -305,6 +309,8 @@
         this.play();
     }, false);
     
+
+
 
   </script>
 
