@@ -180,7 +180,6 @@
     startButton.addEventListener('click', event => {
       document.querySelector('#start_area').style.display = "none";
       document.querySelector('#question_area').style.display = "block";
-      document.querySelector('#top').style.display="none";
       bgmaudio.play(); 
       showViews();
     });
@@ -295,8 +294,6 @@
   
     
     function replay(){
-      document.querySelector('#start_area').style.display = "block";
-      document.querySelector('#top').style.display="block";
       document.querySelector('#result_area').style.display = "none";
       score=0;
       order=0;
