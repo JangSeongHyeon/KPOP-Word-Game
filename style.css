@@ -225,5 +225,10 @@ progress::-webkit-progress-bar {
     height: 50px;
   }
 
+  #question{
+    width: 200px;
+    height: 100px;
+  }
+
   
 }
