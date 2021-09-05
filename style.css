@@ -252,5 +252,10 @@ progress::-webkit-progress-bar {
   #question_line2{
     font-size: 7px;
   }
-  
+}
+
+#ad_area{
+  width: 320px;
+  margin: 0 auto;
+  margin-top: 15px;
 }

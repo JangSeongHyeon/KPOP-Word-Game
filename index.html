@@ -12,9 +12,9 @@
 </head>
 
 <body>
-  
+
   <audio id='audio_play' src='./bgm.mp3'></audio>
-  <audio id='click_play' src='./click.mp3'></audio>  
+  <audio id='click_play' src='./click.mp3'></audio>
   <audio id='timer_play' src="./timer.MP3"></audio>
   <div id="top">
     <h3 class="nico">BTS ARMY テスト</h3>
@@ -32,8 +32,6 @@
 
 
   <!-- 문제 페이지 -->
-  
-
   <div id="question_area">
     <img src="./timer.png" alt="" width="50px" height="50px">
     <progress id="question_progress" value="100" max="100"></progress>
@@ -50,43 +48,40 @@
       <button class="answer_button">1</button>
       <button class="answer_button">2</button>
       <button class="answer_button">3</button>
-      
     </div>
   </div>
 
-  
+
   <!-- 결과 페이지 -->
   <div id="result_area">
-    <h2 id="result_title" class="nico"></h1>
-    
-    <img id="result_img" src="./LV5.jpg" alt="">
-    <h2 class="nico">ARMY レベル</h2>
-    <progress id="result_progress" value="50" max="100"></progress>
-    <p id="result_explain"></p>
-    <div>
-      <button id="replay_button">再挑戦！</button>
-    </div>
+    <h2 id="result_title" class="nico">
+      </h1>
+
+      <img id="result_img" src="./LV5.jpg" alt="">
+      <h2 class="nico">ARMY レベル</h2>
+      <progress id="result_progress" value="50" max="100"></progress>
+      <p id="result_explain"></p>
+      <div>
+        <button id="replay_button">再挑戦！</button>
+      </div>
+
+      <div id="ad_area">
+        <ins class="kakao_ad_area" style="display:none;" data-ad-unit= "DAN-XQ5Ae0i3qdaFuOuU" data-ad-width= "320" data-ad-height= "100"></ins> 
+      </div>
   </div>
 
-
-  <div>
-    <ins class="kakao_ad_area" style="display:none;" 
-      data-ad-unit    = "DAN-ulunhFcGaDYMoJXb" 
-      data-ad-width   = "320" 
-      data-ad-height  = "50"></ins> 
-  </div>
   
-  <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
 
 
   <script>
-    var bgmaudio = document.getElementById('audio_play'); 
-    var clickaudio=document.getElementById('click_play');
-    var timeraudio=document.getElementById('timer_play');
+    var bgmaudio = document.getElementById('audio_play');
+    var clickaudio = document.getElementById('click_play');
+    var timeraudio = document.getElementById('timer_play');
     const startButton = document.querySelector('#start_button');
     const answerButton1 = document.getElementsByClassName("answer_button")[0];
     answerButton1.addEventListener('click', next);
-    
+
 
     const answerButton2 = document.getElementsByClassName("answer_button")[1];
     answerButton2.addEventListener('click', next);
@@ -97,15 +92,15 @@
     // const answerButton4 = document.getElementsByClassName("answer_button")[3];
     // answerButton4.addEventListener('click', next);
 
-    const replayButton=document.querySelector('#replay_button');
-    replayButton.addEventListener('click',replay);
+    const replayButton = document.querySelector('#replay_button');
+    replayButton.addEventListener('click', replay);
 
 
     let order = 0;
     let score = 0;
-    let timer=100;
+    let timer = 100;
     let myvar;
-    let timerbar=document.getElementById("question_progress");
+    let timerbar = document.getElementById("question_progress");
 
 
 
@@ -129,7 +124,7 @@
         0: 'SUGA',
         1: 'JUNGKOOK',
         2: 'JIMIN',
-        img:'./jm.JPG',
+        img: './jm.JPG',
         answer: 'JIMIN'
       },
       3: {
@@ -144,7 +139,7 @@
         0: 'V',
         1: 'J-HOPE',
         2: 'RM',
-        img:'./v.JPG',
+        img: './v.JPG',
         answer: 'V'
       },
       5: {
@@ -166,7 +161,7 @@
         0: 'J-HOPE',
         1: 'JIN',
         2: 'RM',
-        img:'./jin.JPG',
+        img: './jin.JPG',
         answer: 'RM'
       },
       8: {
@@ -190,7 +185,8 @@
     startButton.addEventListener('click', event => {
       document.querySelector('#start_area').style.display = "none";
       document.querySelector('#question_area').style.display = "block";
-      bgmaudio.play(); 
+      document.querySelector('#top').style.display = "none";
+      bgmaudio.play();
       showViews();
     });
 
@@ -205,53 +201,53 @@
         showResults();
       } else {
         timeraudio.pause();
-        document.getElementById('question_line').innerHTML=questions[order]['question'];
-        document.getElementById('q-number').innerHTML='Q'+(order+1);
+        document.getElementById('question_line').innerHTML = questions[order]['question'];
+        document.getElementById('q-number').innerHTML = 'Q' + (order + 1);
         timerbar.style.setProperty("--c", "#B0F7FF");
 
-        if(order==2){
-          document.getElementById('question_img').src=questions[order]['img'];
-          document.getElementById('question_img').style.display='block';     
-          document.getElementById('question_line').style.display='none';
-          document.getElementById('question_line2').style.display='block';
-        }else if(order==4){ 
-          document.getElementById('question_img').src=questions[order]['img'];
-          document.getElementById('question_img').style.display='block'; 
-          document.getElementById('question_line').style.display='none';
-          document.getElementById('question_line2').style.display='block';
-        }else if(order==7){
-          document.getElementById('question_img').src=questions[order]['img'];
-          document.getElementById('question_img').style.display='block'; 
-          document.getElementById('question_line').style.display='none';
-          document.getElementById('question_line2').style.display='block';
-        }else{
-          document.getElementById('question_img').style.display='none';
-          document.getElementById('question_line').style.display='block';
-          document.getElementById('question_line2').style.display='none';
+        if (order == 2) {
+          document.getElementById('question_img').src = questions[order]['img'];
+          document.getElementById('question_img').style.display = 'block';
+          document.getElementById('question_line').style.display = 'none';
+          document.getElementById('question_line2').style.display = 'block';
+        } else if (order == 4) {
+          document.getElementById('question_img').src = questions[order]['img'];
+          document.getElementById('question_img').style.display = 'block';
+          document.getElementById('question_line').style.display = 'none';
+          document.getElementById('question_line2').style.display = 'block';
+        } else if (order == 7) {
+          document.getElementById('question_img').src = questions[order]['img'];
+          document.getElementById('question_img').style.display = 'block';
+          document.getElementById('question_line').style.display = 'none';
+          document.getElementById('question_line2').style.display = 'block';
+        } else {
+          document.getElementById('question_img').style.display = 'none';
+          document.getElementById('question_line').style.display = 'block';
+          document.getElementById('question_line2').style.display = 'none';
         }
-        
-        let counter=100;
-        myvar=setInterval(frame,1000);
-        
 
-        timerbar.value=100;
+        let counter = 100;
+        myvar = setInterval(frame, 1000);
+
+
+        timerbar.value = 100;
         for (var i = 0; i < 3; i++) {
           document.getElementsByClassName('answer_button')[i].innerHTML = questions[order][i];
         }
-        
-        function frame(){
+
+        function frame() {
           if (counter <= 0) {
-                clearInterval(myvar);
-                order++;
-                showViews();
-            } else {
-                if(counter<70){
-                  timerbar.style.setProperty("--c", "#FFA887");
-                  timeraudio.play();
-                }
-                counter=counter-10;
-                timerbar.value=counter;
+            clearInterval(myvar);
+            order++;
+            showViews();
+          } else {
+            if (counter < 70) {
+              timerbar.style.setProperty("--c", "#FFA887");
+              timeraudio.play();
             }
+            counter = counter - 10;
+            timerbar.value = counter;
+          }
         }
       }
     }
@@ -272,54 +268,51 @@
       order++;
       showViews();
     }
-  
-  
-    function showResults(){
+
+
+    function showResults() {
       document.querySelector('#question_area').style.display = "none";
       document.querySelector('#result_area').style.display = "block";
 
-      if(score>=9){
+      if (score >= 9) {
         document.getElementById("result_img").src = "LV5.jpg";
-        document.getElementById("result_title").innerHTML="LV4.ARMY"
-        document.getElementById("result_progress").value="100";
-        document.getElementById("result_explain").innerHTML="あなたはLV4のARMYです"
-      }else if(score>=7){
+        document.getElementById("result_title").innerHTML = "LV4.ARMY"
+        document.getElementById("result_progress").value = "100";
+        document.getElementById("result_explain").innerHTML = "あなたはLV4のARMYです"
+      } else if (score >= 7) {
         document.getElementById("result_img").src = "LV4.jpg";
-        document.getElementById("result_title").innerHTML="LV3.ARMY"
-        document.getElementById("result_progress").value="80";
-        document.getElementById("result_explain").innerHTML="あなたはLV3のARMYです"
-      }else if(score>=5){
+        document.getElementById("result_title").innerHTML = "LV3.ARMY"
+        document.getElementById("result_progress").value = "80";
+        document.getElementById("result_explain").innerHTML = "あなたはLV3のARMYです"
+      } else if (score >= 5) {
         document.getElementById("result_img").src = "LV3.jpg";
-        document.getElementById("result_title").innerHTML="L2.ARMY"
-        document.getElementById("result_progress").value="60";
-        document.getElementById("result_explain").innerHTML="あなたはLV2のARMYです"
-      }else{
+        document.getElementById("result_title").innerHTML = "L2.ARMY"
+        document.getElementById("result_progress").value = "60";
+        document.getElementById("result_explain").innerHTML = "あなたはLV2のARMYです"
+      } else {
         document.getElementById("result_img").src = "LV1.png";
-        document.getElementById("result_title").innerHTML="LV1.ARMY"
-        document.getElementById("result_progress").value="20";
-        document.getElementById("result_explain").innerHTML="あなたはLV1のARMYです"
+        document.getElementById("result_title").innerHTML = "LV1.ARMY"
+        document.getElementById("result_progress").value = "20";
+        document.getElementById("result_explain").innerHTML = "あなたはLV1のARMYです"
       }
-      
+
     }
-  
-    
-    function replay(){
+
+
+    function replay() {
       document.querySelector('#start_area').style.display = "block";
       document.querySelector('#result_area').style.display = "none";
-      score=0;
-      order=0;
+      document.querySelector('#top').style.display = "none";
+      score = 0;
+      order = 0;
     }
-  
+
 
     // 무한재생
-    bgmaudio.addEventListener('ended', function() { 
-        this.currentTime = 0;
-        this.play();
+    bgmaudio.addEventListener('ended', function () {
+      this.currentTime = 0;
+      this.play();
     }, false);
-    
-
-
-
   </script>
 
 </body>
