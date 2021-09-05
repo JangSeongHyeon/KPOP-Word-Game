@@ -228,6 +228,7 @@ progress::-webkit-progress-bar {
   #question{
     width: 200px;
     height: 100px;
+    background-color: black;
   }
 
   
