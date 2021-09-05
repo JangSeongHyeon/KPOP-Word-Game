@@ -226,9 +226,13 @@ progress::-webkit-progress-bar {
   }
 
   #question{
-    width: 200px;
+    width: 350px;
+    height: 150px;
+  }
+
+  #question_img{
+    width: 150px;
     height: 100px;
-    background-color: black;
   }
 
   
