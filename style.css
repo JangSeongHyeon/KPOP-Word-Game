@@ -228,6 +228,7 @@ progress::-webkit-progress-bar {
   .answer_button{
     width: 200px;
     height: 50px;
+    font-size:15px;
   }
 
   #question{
