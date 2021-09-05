@@ -93,7 +93,9 @@ button{
   margin-top: 15px;
 }
 
-
+#question_line{
+  margin-top: 13%;
+}
 #question_line2{
   display: none;
 }
