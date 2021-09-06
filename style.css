@@ -1,7 +1,10 @@
 h3, body{
   margin: 0 0 0 0;
   color: #212529;
-  font-family: "M PLUS 1p";
+  font-family:'Jua', cursive;;
+}
+.singleday{
+  font-family: 'Single Day', cursive;
 }
 
 body{
