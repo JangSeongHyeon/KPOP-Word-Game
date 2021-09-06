@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&family=Jua&family=Single+Day&display=swap" rel="stylesheet">
-  <title>대구 토박이 테스트</title>
+  <title>대구 토박이 퀴즈</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -21,7 +21,7 @@
   <!-- 시작 페이지 -->
   <div id="start_area">
     <div id="start_container">
-      <h1 id="main_text" class="singleday">대구 토박이 테스트</h1>
+      <h1 id="main_text" class="singleday">대구 토박이 퀴즈</h1>
       <h5 id="start_explain">나는 대구에 대해 얼마나 알고 있을까?</h5>
     </div>
     <button id="start_button">시작하기</button>
@@ -107,81 +107,158 @@
 
     const questions = {
       0: {
-        question: 'Vの出身地はどこでしょうか？',
-        0: 'ソウル',
-        1: '大邱（てぐ）',
-        2: '釜山（ぷさん）',
-        answer: '大邱（てぐ）'
+        question: '대구의 슬로건으로 올바른 것은?',
+        0: 'Colorful Daegu',
+        1: 'Dynamic Daegu',
+        2: 'BlueCity Daegu',
+        answer: 'Colorful Daegu'
       },
       1: {
-        question: 'アジア最大の音楽授賞式「MAMA」にてBTSが初めて大賞を受賞したのは何年ですか？',
-        0: '2016年',
-        1: '2017年',
-        2: '2018年',
-        answer: '2016年'
+        question: '대구 도심의 정중앙에 위치한 최대 번화가 겸 랜드마크로 대구사람들에게 시내로 통하기도 하는 이곳은 어디일까요?',
+        0: '달구벌로',
+        1: '동성로',
+        2: '동대구로',
+        answer: '동성로'
       },
       2: {
-        question: 'これは誰？',
-        0: 'SUGA',
-        1: 'JUNGKOOK',
-        2: 'JIMIN',
+        question: '이 장소의 이름은 무엇일까요?',
+        0: '월광수변공원',
+        1: '수성못',
+        2: '하중도',
         img: './jm.JPG',
-        answer: 'JIMIN'
+        answer: '수성못'
       },
       3: {
-        question: '常に努力することを忘れないJIMINは、何の虫と呼ばれているでしょうか？',
-        0: '練習',
-        1: 'ダンス',
-        2: '努力',
-        answer: '練習'
+        question: '대구에 위치한 놀이 공원으로 알맞은 것은?',
+        0: '롯데월드',
+        1: '오월드',
+        2: '이월드',
+        answer: '이월드'
       },
       4: {
-        question: 'これは誰？',
-        0: 'V',
-        1: 'J-HOPE',
-        2: 'RM',
+        question: '이 타워 이름은?',
+        0: '남산타워',
+        1: '롯데타워',
+        2: '83타워',
         img: './v.JPG',
-        answer: 'V'
+        answer: '83타워'
       },
       5: {
-        question: '寝ることが好きなことで有名なSUGAですが、そんな彼が得意なスポーツは何でしょうか？',
-        0: 'バドミントン',
-        1: 'サッカー',
-        2: 'バスケットボール',
-        answer: 'バスケットボール'
+        question: '다음 중 대구의 대표음식이 아닌 것은?',
+        0: '따로국밥',
+        1: '찜갈비',
+        2: '밀면',
+        answer: '밀면'
       },
       6: {
-        question: 'RMと誕生日が同じメンバーは誰？',
-        0: 'SUGA',
-        1: 'JUNGKOOK',
-        2: 'V',
-        answer: 'JUNGKOOK'
+        question: '다음중 대구 대표 빵집으로 알맞은 것은?',
+        0: '성심당',
+        1: '삼송빵집',
+        2: '아미앙 베이커리',
+        answer: '삼송빵집'
       },
       7: {
-        question: 'これは誰？',
-        0: 'J-HOPE',
-        1: 'JIN',
-        2: 'RM',
+        question: '이 장소의 이름은 무엇일까요?',
+        0: '김광석 거리',
+        1: '계산 성당',
+        2: '이상화 고택',
         img: './jin.JPG',
-        answer: 'RM'
+        answer: '김광석 거리'
       },
       8: {
-        question: '2017年2月18日から12月10日まで行った「2017 BTS Live Trilogy Episode III: The Wings Tour」でJUNGKOOKがパフォーマンスしたソロ曲は何でしょうか？',
-        0: 'Begin',
-        1: 'Euphoria',
-        2: 'My Time',
-        answer: 'Begin'
+        question: '다음 중 대구의 축제가 아닌 것은?',
+        0: '빛초롱 축제',
+        1: '치맥페스티벌',
+        2: '한방문화축제',
+        answer: '빛초롱 축제'
       },
       9: {
-        question: 'J-HOPEは自己紹介の時、「僕はあなたの○○、あなたは僕の○○」というフレーズを言います。○○に入る共通の言葉は何でしょうか？',
-        0: '癒し',
-        1: '希望',
-        2: '情熱',
-        answer: '希望'
+        question: '다음 중 대구의 대표 야구팀으로 알맞은 것은 무엇 인가요?',
+        0: '한화 이글스',
+        1: '삼성 라이온즈',
+        2: '롯데 자이언츠',
+        answer: '삼성 라이온즈'
       },
     }
 
 
+    const questions2 = {
+      0: {
+        question: '다음 중 위치별 대표음식으로 알맞지 않은 것은?',
+        0: '동인동 - 찜갈비',
+        1: '북성로 - 연탄불고기',
+        2: '안지랑 - 납작만두',
+        answer: '안지랑 - 납작만두'
+      },
+      1: {
+        question: '대구의 옛 이름으로 알맞지 않은 것은?',
+        0: '대구 직할시',
+        1: '달고개',
+        2: '달구벌',
+        answer: '달고개'
+      },
+      2: {
+        question: '이 곳의 이름은 무엇인가요?',
+        0: '아양교 기찻길',
+        1: '동촌 해맞이 다리',
+        2: '와룡대교',
+        img: './jm.JPG',
+        answer: '아양교 기찻길'
+      },
+      3: {
+        question: '대구 이월드의 옛 이름으로 알맞은 것은?',
+        0: '대구랜드',
+        1: '우방타워랜드',
+        2: '두류타워랜드',
+        answer: '우방타워랜드'
+      },
+      4: {
+        question: '이 지하철 역의 이름은 무엇인가요?',
+        0: '칠성시장',
+        1: '대구역',
+        2: '명덕',
+        img: './v.JPG',
+        answer: '명덕'
+      },
+      5: {
+        question: '다음 중 대구광역시 내에 위치한 대학교는?',
+        0: '경북대학교',
+        1: '대구대학교',
+        2: '영남대학교',
+        answer: '경북대학교'
+      },
+      6: {
+        question: '다음 중 대구 출신 가수가 아닌 사람은?',
+        0: '김광석',
+        1: '방탄소년단 뷔',
+        2: '영탁',
+        answer: '영탁'
+      },
+      7: {
+        question: '이 장소의 이름은 무엇일까요?',
+        0: '김광석 거리',
+        1: '계산 성당',
+        2: '이상화 고택',
+        img: './jin.JPG',
+        answer: '김광석 거리'
+      },
+      8: {
+        question: '강과 물, 자연을 모티브로 디자인된 건물입니다. 이곳은 어디일까요?',
+        0: '강정보 디아크',
+        1: '제일교회',
+        2: 'ㅁㄴ',
+        answer: '강정보 디아크'
+      },
+      9: {
+        question: '다음중 대구의 지하철 역으로 알맞지 않은 것은?',
+        0: '만촌',
+        1: '상인',
+        2: '월성',
+        answer: '월성'
+      },
+    }
+    
+    
     // 시작버튼 리스너
     startButton.addEventListener('click', event => {
       document.querySelector('#start_area').style.display = "none";
