@@ -31,9 +31,8 @@
   <div id="select_area">
     <h1 id="select_exp">도전 할 문제의 난이도를 선택해주세요.</h1>
     <div id="select_buttons">
-      <button class="sel_button" style="background-color: #C1FF6B;border: 1px solid #C1FF6B;">LV1</button>
-      <button class="sel_button" style="background-color: #FFA147;border: 1px solid #FFA147;">LV2</button>
-      <button class="sel_button" style="background-color: #FF71F8;border: 1px solid #FF71F8;">LV3</button>
+      <button id="lv1button" class="sel_button" style="background-color: #C1FF6B;border: 1px solid #C1FF6B;">LV1</button>
+      <button id="lv2button" class="sel_button" style="background-color: #FFA147;border: 1px solid #FFA147;">LV2</button>
     </div>
   </div>
 
@@ -81,8 +80,10 @@
     var timeraudio = document.getElementById('timer_play');
     const startButton = document.querySelector('#start_button');
     const answerButton1 = document.getElementsByClassName("answer_button")[0];
-    answerButton1.addEventListener('click', next);
+    const lv1Button=document.getElementById('lv1button');
+    const lv2Button=document.getElementById('lv2button');
 
+    answerButton1.addEventListener('click', next);
 
     const answerButton2 = document.getElementsByClassName("answer_button")[1];
     answerButton2.addEventListener('click', next);
@@ -101,6 +102,7 @@
     let score = 0;
     let timer = 100;
     let myvar;
+    let level=1;
     let timerbar = document.getElementById("question_progress");
 
 
@@ -258,18 +260,28 @@
       },
     }
     
-    
+
     // 시작버튼 리스너
     startButton.addEventListener('click', event => {
       document.querySelector('#start_area').style.display = "none";
-      document.querySelector('#question_area').style.display = "block";
+      document.querySelector('#select_area').style.display="block";
       bgmaudio.play();
-      showViews();
     });
 
 
+    lv1Button.addEventListener('click',event=>{
+      document.querySelector('#select_area').style.display="none";
+      document.querySelector('#question_area').style.display="block";
+      level=1;
+      showViews();
+    })
 
-
+    lv2Button.addEventListener('click',event=>{
+      document.querySelector('#select_area').style.display="none";
+      document.querySelector('#question_area').style.display="block";
+      level=2;
+      showViews();
+    })
 
     // 보기버튼에 내용 뿌리기
     function showViews() {
@@ -278,29 +290,62 @@
         showResults();
       } else {
         timeraudio.pause();
-        document.getElementById('question_line').innerHTML = questions[order]['question'];
         timerbar.style.setProperty("--c", "#B0F7FF");
-
-        if (order == 2) {
-          document.getElementById('question_img').src = questions[order]['img'];
-          document.getElementById('question_img').style.display = 'block';
-          document.getElementById('question_line').style.display = 'none';
-          document.getElementById('question_line2').style.display = 'block';
-          
-        } else if (order == 4) {
-          document.getElementById('question_img').src = questions[order]['img'];
-          document.getElementById('question_img').style.display = 'block';
-          document.getElementById('question_line').style.display = 'none';
-          document.getElementById('question_line2').style.display = 'block';
-        } else if (order == 7) {
-          document.getElementById('question_img').src = questions[order]['img'];
-          document.getElementById('question_img').style.display = 'block';
-          document.getElementById('question_line').style.display = 'none';
-          document.getElementById('question_line2').style.display = 'block';
-        } else {
-          document.getElementById('question_img').style.display = 'none';
-          document.getElementById('question_line').style.display = 'block';
-          document.getElementById('question_line2').style.display = 'none';
+        
+        // 레벨1 선택시
+        if(level==1){
+          document.getElementById('question_line').innerHTML = questions[order]['question'];
+          if (order == 2) {
+            document.getElementById('question_img').src = questions[order]['img'];
+            document.getElementById('question_img').style.display = 'block';
+            document.getElementById('question_line').style.display = 'none';
+            document.getElementById('question_line2').style.display = 'block';
+            
+          } else if (order == 4) {
+            document.getElementById('question_img').src = questions[order]['img'];
+            document.getElementById('question_img').style.display = 'block';
+            document.getElementById('question_line').style.display = 'none';
+            document.getElementById('question_line2').style.display = 'block';
+          } else if (order == 7) {
+            document.getElementById('question_img').src = questions[order]['img'];
+            document.getElementById('question_img').style.display = 'block';
+            document.getElementById('question_line').style.display = 'none';
+            document.getElementById('question_line2').style.display = 'block';
+          } else {
+            document.getElementById('question_img').style.display = 'none';
+            document.getElementById('question_line').style.display = 'block';
+            document.getElementById('question_line2').style.display = 'none';
+          }
+          for (var i = 0; i < 3; i++) {
+            document.getElementsByClassName('answer_button')[i].innerHTML = questions[order][i];
+          }
+      // 레벨2 선택시
+        }else{
+          document.getElementById('question_line').innerHTML = questions2[order]['question'];
+          if (order == 2) {
+            document.getElementById('question_img').src = questions2[order]['img'];
+            document.getElementById('question_img').style.display = 'block';
+            document.getElementById('question_line').style.display = 'none';
+            document.getElementById('question_line2').style.display = 'block';
+            
+          } else if (order == 4) {
+            document.getElementById('question_img').src = questions2[order]['img'];
+            document.getElementById('question_img').style.display = 'block';
+            document.getElementById('question_line').style.display = 'none';
+            document.getElementById('question_line2').style.display = 'block';
+          } else if (order == 7) {
+            document.getElementById('question_img').src = questions2[order]['img'];
+            document.getElementById('question_img').style.display = 'block';
+            document.getElementById('question_line').style.display = 'none';
+            document.getElementById('question_line2').style.display = 'block';
+          } else {
+            document.getElementById('question_img').style.display = 'none';
+            document.getElementById('question_line').style.display = 'block';
+            document.getElementById('question_line2').style.display = 'none';
+          }
+          for (var i = 0; i < 3; i++) {
+            document.getElementsByClassName('answer_button')[i].innerHTML = questions2[order][i];
+          }
         }
 
         let counter = 100;
@@ -308,9 +353,7 @@
 
 
         timerbar.value = 100;
-        for (var i = 0; i < 3; i++) {
-          document.getElementsByClassName('answer_button')[i].innerHTML = questions[order][i];
-        }
+        
 
         function frame() {
           if (counter <= 0) {
