@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="kr">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
-  <title>BTS ARMY TEST</title>
+  <link href="https://fonts.googleapis.com/earlyaccess/hanna.css" rel="stylesheet">
+  <title>대구 토박이 테스트</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,26 +15,31 @@
   <audio id='audio_play' src='./bgm.mp3'></audio>
   <audio id='click_play' src='./click.mp3'></audio>
   <audio id='timer_play' src="./timer.MP3"></audio>
-  <div id="top">
-    <h3 class="nico">BTS ARMY テスト</h3>
-  </div>
 
   <!-- 시작 페이지 -->
-  <div id="start_area" class="flex">
+  <div id="start_area">
     <div id="start_container">
-      <h1 class="nico">BTS ARMY テスト</h1>
-      <h5 id="start_explain">自分のBTS理解度は？</h5>
-      <button id="start_button">はじめる</button>
+      <h1 id="main_text" class="hanna">대구 토박이 테스트</h1>
+      <h5 id="start_explain">나는 대구에 대해 얼마나 알고 있을까?</h5>
+    </div>
+    <button id="start_button">시작하기</button>
+  </div>
+
+
+  <div id="select_area">
+    <h1 id="select_exp">도전 할 문제의 난이도를 선택해주세요.</h1>
+    <div id="select_buttons">
+      <button class="sel_button" style="background-color: #C1FF6B;border: 1px solid #C1FF6B;">LV1</button>
+      <button class="sel_button" style="background-color: #FFA147;border: 1px solid #FFA147;">LV2</button>
+      <button class="sel_button" style="background-color: #FF71F8;border: 1px solid #FF71F8;">LV3</button>
     </div>
   </div>
 
-
   <!-- 문제 페이지 -->
   <div id="question_area">
-    <img src="./timer.png" alt="" width="50px" height="50px">
-    <progress id="question_progress" value="100" max="100"></progress>
-    <span id="q-number"></span>
-    <span id="q10"> / Q10</span>
+    <div id="question_top">
+      <progress id="question_progress" value="100" max="100"></progress>
+    </div>
     <div id="question">
       <img id="question_img" src="" alt="">
       <p id="question_line"></p>
@@ -49,6 +53,7 @@
       <button class="answer_button">3</button>
     </div>
   </div>
+
 
 
   <!-- 결과 페이지 -->
@@ -65,9 +70,6 @@
       </div>
 
       
-      <div id="ad_area">
-        <ins class="kakao_ad_area" style="display:none;" data-ad-unit= "DAN-XQ5Ae0i3qdaFuOuU" data-ad-width= "320" data-ad-height= "100"></ins> 
-      </div>
       <h2 style="margin-bottom: 5px;"> ユーザーコメント</h2>
       <div id="disqus_thread"></div>
   </div>
@@ -91,7 +93,7 @@
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+
 
 
   <script>
@@ -205,7 +207,6 @@
     startButton.addEventListener('click', event => {
       document.querySelector('#start_area').style.display = "none";
       document.querySelector('#question_area').style.display = "block";
-      document.querySelector('#top').style.display = "none";
       bgmaudio.play();
       showViews();
     });
@@ -222,7 +223,6 @@
       } else {
         timeraudio.pause();
         document.getElementById('question_line').innerHTML = questions[order]['question'];
-        document.getElementById('q-number').innerHTML = 'Q' + (order + 1);
         timerbar.style.setProperty("--c", "#B0F7FF");
 
         if (order == 2) {
@@ -322,7 +322,6 @@
     function replay() {
       document.querySelector('#start_area').style.display = "block";
       document.querySelector('#result_area').style.display = "none";
-      document.querySelector('#top').style.display = "none";
       score = 0;
       order = 0;
     }
