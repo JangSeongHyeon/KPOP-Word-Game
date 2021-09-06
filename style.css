@@ -23,9 +23,11 @@ button{
   padding-top: 20px;
 }
 
-/* #start_area{
-  display: none;
-} */
+body{
+  background-image: url("./background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 #start_container{
   text-align: center;
