@@ -132,16 +132,16 @@ button{
   text-align: center;
 }
 
-/* #question_line{
-  margin-top: 13%;
-} */
+#question_line{
+  margin-top: 13vh;
+}
 
 
 #question{
   width: 80%;
   height: 40vh;
   background-color: white;
-  font-size: 2vh;
+  font-size: 3vh;
   border-radius: 15px;
   margin: 0 auto;
   margin-top: 10px;
@@ -160,6 +160,7 @@ button{
   width: 70%;
   height: 8vh;
   margin-top: 4vh;
+  font-size:6vh;
 }
 
 .answer_button:hover{
@@ -258,5 +259,12 @@ progress::-webkit-progress-bar {
 @media (min-width: 200px) and (max-width: 767px) {
   #question{
     height: 30vh;
+    font-size: 1vh;
+  }
+  #question_img{
+    height: 15vh;
+  }
+  .answer_button{
+    font-size:3vh;
   }
 }
