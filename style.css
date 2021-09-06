@@ -23,12 +23,7 @@ button{
   padding-top: 20px;
 }
 
-body{
-  background: url(./background.jpg) #202020 no-repeat;
-  background-size: cover;
-  max-height: 100%;
-  max-width: 100%;
-}
+
 
 #start_container{
   text-align: center;
