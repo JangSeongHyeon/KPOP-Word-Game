@@ -5,6 +5,15 @@ h3, body{
   
 }
 
+body{
+  height: 100vh;
+  background-image: url("./background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background: url("./background.jpg") no-repeat center/cover;
+}
+
 button{
   font-family: "M PLUS 1p";
 }
@@ -33,9 +42,10 @@ button{
 
 
 #start_img{
-  width: 250px;
+  width: 300px;
   height: 300px;
 }
+
 
 #start_explain{
   color: #909090;
