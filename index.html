@@ -363,6 +363,7 @@
     function showResults() {
       document.querySelector('#question_area').style.display = "none";
       document.querySelector('#result_area').style.display = "block";
+      document.querySelector('body').style.background="radial-gradient(circle, white, blue, violet)";
 
       if (score >= 9) {
         document.getElementById("result_img").src = "LV4.png";
@@ -390,6 +391,7 @@
 
 
     function replay() {
+      document.body.style.backgroundImage = "url('./background2.png')";
       document.querySelector('#start_area').style.display = "block";
       document.querySelector('#result_area').style.display = "none";
       document.getElementById('score_line').innerHTML=0;
