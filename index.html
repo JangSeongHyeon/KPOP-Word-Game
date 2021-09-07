@@ -62,10 +62,10 @@
 
   <!-- 결과 페이지 -->
   <div id="result_area">
-    <img id="level_img" src="" alt="">
-    <h2 id="result_title" class="nico"></h2>
+    <h5 id="level_text"></h5>
+    
       <img id="result_img" src="" alt="">
-      <h2 class="nico">私のレベル</h2>
+      <h2 id="result_title"></h2>
       <progress id="result_progress" value="50" max="100"></progress>
       <p id="result_explain"></p>
       <div>
@@ -121,7 +121,7 @@
         answer: '인싸'
       },
       1: {
-        question: '「男の友達」の同じ意味の言葉は何でしょうか？',
+        question: '「男友達」の同じ意味の言葉は何でしょうか？',
         0: '남친',
         1: '남사친',
         2: '여사친',
@@ -170,7 +170,7 @@
         answer: '김광석 거리'
       },
       8: {
-        question: '「ぎもい」という意味の言葉は何でしょうか？',
+        question: '「きもい」という意味の言葉は何でしょうか？',
         0: '극찬',
         1: '극혐',
         2: '극한',
@@ -295,7 +295,7 @@
         // 레벨1 선택시
         if(level==1){
           document.getElementById('question_line').innerHTML = questions[order]['question'];
-          document.getElementById("level_img").src = "./one.png";
+          document.getElementById("level_text").innerHTML = "ステージ1";
 
           for (var i = 0; i < 3; i++) {
             document.getElementsByClassName('answer_button')[i].innerHTML = questions[order][i];
@@ -303,7 +303,7 @@
       // 레벨2 선택시
         }else{
           document.getElementById('question_line').innerHTML = questions2[order]['question'];
-          document.getElementById("level_img").src = "./two.png";
+          document.getElementById("level_text").innerHTML = "ステージ2";
 
           for (var i = 0; i < 3; i++) {
             document.getElementsByClassName('answer_button')[i].innerHTML = questions2[order][i];
