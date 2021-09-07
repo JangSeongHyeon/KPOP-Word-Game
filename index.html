@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="jpr">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&family=Jua&family=Single+Day&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
   <title>대구 토박이 퀴즈</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -15,36 +14,39 @@
 <body>
 
   <audio id='audio_play' src='./bgm.mp3'></audio>
-  <audio id='click_play' src='./click.mp3'></audio>
+  <audio id='ok_play' src='./ok.mp3'></audio>
+  <audio id='no_play' src='./no.mp3'></audio>
   <audio id='timer_play' src="./timer.MP3"></audio>
 
   <!-- 시작 페이지 -->
   <div id="start_area">
     <div id="start_container">
-      <h1 id="main_text" class="singleday">대구 토박이 퀴즈</h1>
-      <h5 id="start_explain">나는 대구에 대해 얼마나 알고 있을까?</h5>
+      <h1 class="main_text" class="singleday">かんこくご</h1>
+      <h1 class="main_text" class="singleday">若者言葉クイズ</h1>
+      <h5 id="start_explain">私は韓国語の若者につちえどれぐらい知っているのか？</h5>
     </div>
-    <button id="start_button">시작하기</button>
+    <button id="start_button">はじめる</button>
   </div>
 
 
   <div id="select_area">
-    <h1 id="select_exp">도전 할 문제의 난이도를 선택해주세요.</h1>
+    <h1 id="select_exp">ステージを選択してください！！</h1>
     <div id="select_buttons">
-      <button id="lv1button" class="sel_button" style="background-color: #C1FF6B;border: 1px solid #C1FF6B;">LV1</button>
-      <button id="lv2button" class="sel_button" style="background-color: #FFA147;border: 1px solid #FFA147;">LV2</button>
+      <button id="lv1button" class="sel_button" style="background-color: #C1FF6B;border: 1px solid #C1FF6B;">LEVEL1</button>
+      <button id="lv2button" class="sel_button" style="background-color: #FFA147;border: 1px solid #FFA147;">LEVEL2</button>
     </div>
   </div>
 
   <!-- 문제 페이지 -->
   <div id="question_area">
+    <span id="q-number"></span>
+    <span id="q10"> / Q10</span>
     <div id="question_top">
       <progress id="question_progress" value="100" max="100"></progress>
     </div>
     <div id="question">
-      <img id="question_img" src="./background.jpg" alt="">
+      <h3>SCORE</h3><span id="score_line" style="color:#FF9B00;font-weight: bold;">0</span>
       <p id="question_line"></p>
-      <p id="question_line2">ddddddddddddddddddddddddddddddddddddddddddddddddddddd</p>
     </div>
 
 
@@ -59,24 +61,26 @@
 
   <!-- 결과 페이지 -->
   <div id="result_area">
-    <h2 id="result_title" class="nico">
-      </h1>
-
-      <img id="result_img" src="./LV5.jpg" alt="">
-      <h2 class="nico">ARMY レベル</h2>
+    <img id="level_img" src="" alt="">
+    <h2 id="result_title" class="nico"></h2>
+      <img id="result_img" src="" alt="">
+      <h2 class="nico">私のレベル</h2>
       <progress id="result_progress" value="50" max="100"></progress>
       <p id="result_explain"></p>
       <div>
         <button id="replay_button">再挑戦！</button>
       </div>
+      <div>
+        <p style="font-size: 1vh;color: #909090;">Copyright jangseonghyeon 2021. All Rights Reserved. </p>
+      </div>
 
-      
-      <h2 style="margin-bottom: 5px;"> ユーザーコメント</h2>
   </div>
 
   <script>
     var bgmaudio = document.getElementById('audio_play');
-    var clickaudio = document.getElementById('click_play');
+    var okaudio = document.getElementById('ok_play');
+    var noaudio = document.getElementById('no_play');
+
     var timeraudio = document.getElementById('timer_play');
     const startButton = document.querySelector('#start_button');
     const answerButton1 = document.getElementsByClassName("answer_button")[0];
@@ -109,154 +113,148 @@
 
     const questions = {
       0: {
-        question: '대구의 슬로건으로 올바른 것은?',
-        0: 'Colorful Daegu',
-        1: 'Dynamic Daegu',
-        2: 'BlueCity Daegu',
-        answer: 'Colorful Daegu'
+        question: '「陽キャ」と同じ意味の韓国語の表現は？',
+        0: '인싸',
+        1: '아싸',
+        2: '컴싸',
+        answer: '인싸'
       },
       1: {
-        question: '대구 도심의 정중앙에 위치한 최대 번화가 겸 랜드마크로 대구사람들에게 시내로 통하기도 하는 이곳은 어디일까요?',
-        0: '달구벌로',
-        1: '동성로',
-        2: '동대구로',
-        answer: '동성로'
+        question: '「男の友達」の同じ意味の言葉は何でしょうか？',
+        0: '남친',
+        1: '남사친',
+        2: '여사친',
+        answer: '남사친'
       },
       2: {
-        question: '이 장소의 이름은 무엇일까요?',
-        0: '월광수변공원',
-        1: '수성못',
-        2: '하중도',
-        img: './jm.JPG',
-        answer: '수성못'
+        question: 'この中で若者言葉じゃない言葉は何でしょうか？',
+        0: '존버',
+        1: '꿀잼',
+        2: '도랑',
+        answer: '도랑'
       },
       3: {
-        question: '대구에 위치한 놀이 공원으로 알맞은 것은?',
-        0: '롯데월드',
-        1: '오월드',
-        2: '이월드',
-        answer: '이월드'
+        question: '「中学生」の略語・「中坊」と同じニュアンスの言葉はなんでしょうか？',
+        0: '고딩',
+        1: '초딩',
+        2: '중딩',
+        answer: '중딩'
       },
       4: {
-        question: '이 타워 이름은?',
-        0: '남산타워',
-        1: '롯데타워',
-        2: '83타워',
-        img: './v.JPG',
-        answer: '83타워'
+        question: '突然雰囲気が冷める、しらけるという意味の言葉は何でしょうか？',
+        0: '갑분차',
+        1: '갑분싸',
+        2: '갑분사',
+        answer: '갑분싸'
       },
       5: {
-        question: '다음 중 대구의 대표음식이 아닌 것은?',
-        0: '따로국밥',
-        1: '찜갈비',
-        2: '밀면',
-        answer: '밀면'
+        question: '「胸キュン」と同じ意味の言葉は何でしょうか？',
+        0: '심공',
+        1: '심쿵',
+        2: '심꽁',
+        answer: '심쿵'
       },
       6: {
-        question: '다음중 대구 대표 빵집으로 알맞은 것은?',
-        0: '성심당',
-        1: '삼송빵집',
-        2: '아미앙 베이커리',
-        answer: '삼송빵집'
+        question: 'すごく美味しいと言う意味の言葉は何でしょうか？',
+        0: '존맛탱(JMT)',
+        1: '존맛퐁(JMP)',
+        2: '존탱맛(JTM)',
+        answer: '존맛탱(JMT)'
       },
       7: {
-        question: '이 장소의 이름은 무엇일까요?',
-        0: '김광석 거리',
-        1: '계산 성당',
-        2: '이상화 고택',
-        img: './jin.JPG',
+        question: '「どうでもいい情報、別に知らなくていい事」という意味の言葉は何でしょうか？',
+        0: 'TMI',
+        1: 'SMI',
+        2: 'NMI',
         answer: '김광석 거리'
       },
       8: {
-        question: '다음 중 대구의 축제가 아닌 것은?',
-        0: '빛초롱 축제',
-        1: '치맥페스티벌',
-        2: '한방문화축제',
-        answer: '빛초롱 축제'
+        question: '「ぎもい」という意味の言葉は何でしょうか？',
+        0: '극찬',
+        1: '극혐',
+        2: '극한',
+        answer: '극혐'
       },
       9: {
-        question: '다음 중 대구의 대표 야구팀으로 알맞은 것은 무엇 인가요?',
-        0: '한화 이글스',
-        1: '삼성 라이온즈',
-        2: '롯데 자이언츠',
-        answer: '삼성 라이온즈'
+        question: '「押し」という意味の言葉は何でしょうか？',
+        0: '최애',
+        1: '차애',
+        2: '채애',
+        answer: '최애'
       },
     }
 
 
     const questions2 = {
       0: {
-        question: '다음 중 위치별 대표음식으로 알맞지 않은 것은?',
-        0: '동인동 - 찜갈비',
-        1: '북성로 - 연탄불고기',
-        2: '안지랑 - 납작만두',
-        answer: '안지랑 - 납작만두'
+        question: '「複雑な世界を楽に生きていこう」という意味の言葉は何でしょうか？',
+        0: '복세편살',
+        1: '오놀아놈',
+        2: '도란도란',
+        answer: '복세편살'
       },
       1: {
-        question: '대구의 옛 이름으로 알맞지 않은 것은?',
-        0: '대구 직할시',
-        1: '달고개',
-        2: '달구벌',
-        answer: '달고개'
+        question: '「人によって違う」意味の言葉は？(hint:case by case)',
+        0: '케바케',
+        1: '사바사',
+        2: '히바히',
+        answer: '사바사'
       },
       2: {
-        question: '이 곳의 이름은 무엇인가요?',
-        0: '아양교 기찻길',
-        1: '동촌 해맞이 다리',
-        2: '와룡대교',
-        img: './jm.JPG',
-        answer: '아양교 기찻길'
+        question: 'アイスアアメリカーノの略語',
+        0: '아바라',
+        1: '아메',
+        2: '아아',
+        answer: '아아'
       },
       3: {
-        question: '대구 이월드의 옛 이름으로 알맞은 것은?',
-        0: '대구랜드',
-        1: '우방타워랜드',
-        2: '두류타워랜드',
-        answer: '우방타워랜드'
+        question: '「自然な出会いを求める」という意味の言葉は何でしょうか？',
+        0: '이거실화냐',
+        1: '자만추',
+        2: '가즈아',
+        answer: '자만추'
       },
       4: {
-        question: '이 지하철 역의 이름은 무엇인가요?',
-        0: '칠성시장',
-        1: '대구역',
-        2: '명덕',
-        img: './v.JPG',
-        answer: '명덕'
+        question: '「飾ってるような飾ってないような」の略語・自然の感じのおしゃれなスタイルを表す言葉は何でしょうか？',
+        0: '꾸안꾸',
+        1: '별다줄',
+        2: '버카충',
+        answer: '꾸안꾸'
       },
       5: {
-        question: '다음 중 대구광역시 내에 위치한 대학교는?',
-        0: '경북대학교',
-        1: '대구대학교',
-        2: '영남대학교',
-        answer: '경북대학교'
+        question: '「それな」と同じ意味の言葉は何でしょうか？',
+        0: '아니',
+        1: '인정',
+        2: '레게노',
+        answer: '인정'
       },
       6: {
-        question: '다음 중 대구 출신 가수가 아닌 사람은?',
-        0: '김광석',
-        1: '방탄소년단 뷔',
-        2: '영탁',
-        answer: '영탁'
+        question: 'そとはカリッと中はじゅわっとしている食感の表現は何でしょうか？',
+        0: '제곧내',
+        1: '겉바속촉',
+        2: '진지충',
+        answer: '겉바속촉'
       },
       7: {
-        question: '이 장소의 이름은 무엇일까요?',
-        0: '김광석 거리',
-        1: '계산 성당',
-        2: '이상화 고택',
-        img: './jin.JPG',
-        answer: '김광석 거리'
+        question: '「すぐに恋に落ちてしまう人」つまり惚れっぽい人のことです。',
+        0: '금사빠',
+        1: '잼민이',
+        2: '얼짱',
+        answer: '금사빠'
       },
       8: {
-        question: '강과 물, 자연을 모티브로 디자인된 건물입니다. 이곳은 어디일까요?',
-        0: '강정보 디아크',
-        1: '제일교회',
-        2: 'ㅁㄴ',
-        answer: '강정보 디아크'
+        question: '知的でスマートな男性という意味の言葉は何でしょうか？hint: 韓国語では「脳がセクシーな男」の略語です',
+        0: '차도남',
+        1: '요섹남',
+        2: '뇌섹남',
+        answer: '뇌섹남'
       },
       9: {
-        question: '다음중 대구의 지하철 역으로 알맞지 않은 것은?',
-        0: '만촌',
-        1: '상인',
-        2: '월성',
-        answer: '월성'
+        question: 'お酒を飲めない人に使う言葉は何でしょうか？',
+        0: '술고래',
+        1: '알쓰',
+        2: '영끌',
+        answer: '알쓰'
       },
     }
     
@@ -290,59 +288,22 @@
         showResults();
       } else {
         timeraudio.pause();
+        document.getElementById('q-number').innerHTML='Q'+(order+1);
         timerbar.style.setProperty("--c", "#B0F7FF");
         
         // 레벨1 선택시
         if(level==1){
           document.getElementById('question_line').innerHTML = questions[order]['question'];
-          if (order == 2) {
-            document.getElementById('question_img').src = questions[order]['img'];
-            document.getElementById('question_img').style.display = 'block';
-            document.getElementById('question_line').style.display = 'none';
-            document.getElementById('question_line2').style.display = 'block';
-            
-          } else if (order == 4) {
-            document.getElementById('question_img').src = questions[order]['img'];
-            document.getElementById('question_img').style.display = 'block';
-            document.getElementById('question_line').style.display = 'none';
-            document.getElementById('question_line2').style.display = 'block';
-          } else if (order == 7) {
-            document.getElementById('question_img').src = questions[order]['img'];
-            document.getElementById('question_img').style.display = 'block';
-            document.getElementById('question_line').style.display = 'none';
-            document.getElementById('question_line2').style.display = 'block';
-          } else {
-            document.getElementById('question_img').style.display = 'none';
-            document.getElementById('question_line').style.display = 'block';
-            document.getElementById('question_line2').style.display = 'none';
-          }
+          document.getElementById("level_img").src = "./one.png";
+
           for (var i = 0; i < 3; i++) {
             document.getElementsByClassName('answer_button')[i].innerHTML = questions[order][i];
           }
       // 레벨2 선택시
         }else{
           document.getElementById('question_line').innerHTML = questions2[order]['question'];
-          if (order == 2) {
-            document.getElementById('question_img').src = questions2[order]['img'];
-            document.getElementById('question_img').style.display = 'block';
-            document.getElementById('question_line').style.display = 'none';
-            document.getElementById('question_line2').style.display = 'block';
-            
-          } else if (order == 4) {
-            document.getElementById('question_img').src = questions2[order]['img'];
-            document.getElementById('question_img').style.display = 'block';
-            document.getElementById('question_line').style.display = 'none';
-            document.getElementById('question_line2').style.display = 'block';
-          } else if (order == 7) {
-            document.getElementById('question_img').src = questions2[order]['img'];
-            document.getElementById('question_img').style.display = 'block';
-            document.getElementById('question_line').style.display = 'none';
-            document.getElementById('question_line2').style.display = 'block';
-          } else {
-            document.getElementById('question_img').style.display = 'none';
-            document.getElementById('question_line').style.display = 'block';
-            document.getElementById('question_line2').style.display = 'none';
-          }
+          document.getElementById("level_img").src = "./two.png";
+
           for (var i = 0; i < 3; i++) {
             document.getElementsByClassName('answer_button')[i].innerHTML = questions2[order][i];
           }
@@ -376,11 +337,15 @@
 
     // 다음페이지로 가기
     function next(event) {
-      clickaudio.play();
+      
       clearInterval(myvar);
-      if (event.target.textContent == questions[order].answer) {
+      if (event.target.textContent == questions[order].answer || event.target.textContent == questions2[order].answer) {
+        okaudio.play();
         score += 1;
+        document.getElementById('score_line').innerHTML=score+'0';
         console.log('점수', score);
+      }else{
+        noaudio.play();
       }
 
 
@@ -395,25 +360,25 @@
       document.querySelector('#result_area').style.display = "block";
 
       if (score >= 9) {
-        document.getElementById("result_img").src = "LV5.jpg";
-        document.getElementById("result_title").innerHTML = "LV4.ARMY"
+        document.getElementById("result_img").src = "LV4.png";
+        document.getElementById("result_title").innerHTML = "Sランク"
         document.getElementById("result_progress").value = "100";
-        document.getElementById("result_explain").innerHTML = "あなたはLV4のARMYです"
+        document.getElementById("result_explain").innerHTML = "あなたはSランクです"
       } else if (score >= 7) {
-        document.getElementById("result_img").src = "LV4.jpg";
-        document.getElementById("result_title").innerHTML = "LV3.ARMY"
+        document.getElementById("result_img").src = "LV3.png";
+        document.getElementById("result_title").innerHTML = "Aランク"
         document.getElementById("result_progress").value = "80";
-        document.getElementById("result_explain").innerHTML = "あなたはLV3のARMYです"
+        document.getElementById("result_explain").innerHTML = "あなたはAランクです"
       } else if (score >= 5) {
-        document.getElementById("result_img").src = "LV3.jpg";
-        document.getElementById("result_title").innerHTML = "L2.ARMY"
+        document.getElementById("result_img").src = "LV2.png";
+        document.getElementById("result_title").innerHTML = "Bランク"
         document.getElementById("result_progress").value = "60";
-        document.getElementById("result_explain").innerHTML = "あなたはLV2のARMYです"
+        document.getElementById("result_explain").innerHTML = "あなたはBランクです"
       } else {
         document.getElementById("result_img").src = "LV1.png";
-        document.getElementById("result_title").innerHTML = "LV1.ARMY"
+        document.getElementById("result_title").innerHTML = "Cランク"
         document.getElementById("result_progress").value = "20";
-        document.getElementById("result_explain").innerHTML = "あなたはLV1のARMYです"
+        document.getElementById("result_explain").innerHTML = "あなたはCランクです"
       }
 
     }

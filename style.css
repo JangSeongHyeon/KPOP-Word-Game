@@ -1,11 +1,9 @@
 h3, body{
   margin: 0 0 0 0;
   color: #212529;
-  font-family:'Jua', cursive;;
+  font-family:'M PLUS 1p'
 }
-.singleday{
-  font-family: 'Single Day', cursive;
-}
+
 
 body{
   height: 100%;
@@ -34,11 +32,11 @@ button{
 
 body{
   height: 100vh;
-  background-image: url("./background.jpg");
+  background-image: url("./background2.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background: url("./background.jpg") no-repeat center/cover;
+  background: url("./background2.png") no-repeat center/cover;
 }
 
 button{
@@ -51,19 +49,21 @@ button{
 
 
 
-#main_text{
-  font-size: 70px;
+.main_text{
+  font-size: 10vh;
 }
 
 
 #start_area{
   display: block;
   text-align: center;
+  overflow: hidden;
 }
 
 #select_area{
   display: none;
   text-align: center;
+  overflow: hidden;
 }
 
 #select_exp{
@@ -94,7 +94,7 @@ button{
 
 #start_container{
   text-align: center;
-  margin-top: 15px;
+  margin-top: 25vh;
 }
 
 
@@ -105,7 +105,8 @@ button{
 
 #start_button{
   width: 180px;
-  height: 60px;
+  height: 8vh;
+  font-size: 3vh;
   position: absolute;
   bottom:30px;
   left:50%; 
@@ -120,6 +121,16 @@ button{
 
 
 /* question page */
+#q-number{
+  color: #2196f3;
+  font-size: 3vh;
+  font-weight: bold;
+}
+
+#q10{
+  font-size: 3vh;
+  font-weight: bold;
+}
 #question_img{
   width: 60%;
   height: 30vh;
@@ -133,10 +144,11 @@ button{
 #question_area{
   display: none;
   text-align: center;
+  overflow: hidden;
 }
 
 #question_line{
-  margin-top: 13vh;
+  margin-top: 7vh;
 }
 
 
@@ -159,11 +171,12 @@ button{
   margin: 0 auto;
 }
 
+
 .answer_button{
   width: 70%;
   height: 8vh;
   margin-top: 4vh;
-  font-size:4vh;
+  font-size:3vh;
 }
 
 .answer_button:hover{
@@ -179,14 +192,21 @@ button{
   background-color: #F2F8F8;
   text-align: center;
   border-radius: 20px;
+  padding-top: 3vh;
+  margin-top: 2vh;
 }
 
 #result_img{
   width:250px;
 }
 
+#level_img{
+  height: 12vh;
+}
+
 #result_title{
-  font-size: 1.8125rem;
+  margin-top: 2vh;
+  font-size: 8vh;
 }
 
 
@@ -199,12 +219,13 @@ button{
 #replay_button{
   color: white;
   margin-top: 20px;
-  width: 150px;
+  width: 18vw;
+  height: 8vh;
   box-shadow: 0px 8px 15px #E7DCEF;
   background-color: #FFA887	;
   border-radius: 20px;
   border: 1px solid #FFA887;
-  font-size:25px;
+  font-size:3vh;
   font-weight: bold;
 }
 
@@ -269,5 +290,9 @@ progress::-webkit-progress-bar {
   }
   .answer_button{
     font-size:3vh;
+  }
+
+  #start_container{
+    margin-top: 10vh;
   }
 }
