@@ -107,8 +107,8 @@ button{
 }
 
 #start_img{
-  width: 20%;
-  height: 25%;
+  height: 30vh;
+  margin-top: 8vh;
 }
 
 
@@ -118,7 +118,7 @@ button{
   display: block;
   margin: 0 auto;
   font-size: 3vh;
-  margin-top: 3vh;
+  margin-top: 12vh;
 
 
 }
