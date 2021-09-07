@@ -291,13 +291,7 @@ progress::-webkit-progress-bar {
 } 
 
 @media (min-width: 200px) and (max-width: 767px) {
-  #question{
-    height: 35vh;
-  }
-  #question_img{
-    height: 15vh;
-  }
-
+  
   #question_line {
     margin-top: 5vh;
   }
