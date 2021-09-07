@@ -43,6 +43,7 @@
     <span id="q-number"></span>
     <span id="q10"> / Q10</span>
     <div id="question_top">
+      <img id="timer_img" src="./timer.png" alt="">
       <progress id="question_progress" value="100" max="100"></progress>
     </div>
     <div id="question">
@@ -288,10 +289,12 @@
 
     // 보기버튼에 내용 뿌리기
     function showViews() {
+      document.getElementById("timer_img").classList.remove("tanime");
       if (order > 9) {
         console.log('게임 끝');
         showResults();
       } else {
+        
         timeraudio.pause();
         document.getElementById('q-number').innerHTML='Q'+(order+1);
         timerbar.style.setProperty("--c", "#B0F7FF");
@@ -329,6 +332,7 @@
           } else {
             if (counter < 70) {
               timerbar.style.setProperty("--c", "#FFA887");
+              document.getElementById("timer_img").classList.add("tanime");
               timeraudio.play();
             }
             counter = counter - 10;
@@ -342,7 +346,6 @@
 
     // 다음페이지로 가기
     function next(event) {
-      
       clearInterval(myvar);
       if (event.target.textContent == questions[order].answer || event.target.textContent == questions2[order].answer) {
         okaudio.play();

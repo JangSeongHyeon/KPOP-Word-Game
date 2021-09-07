@@ -141,6 +141,7 @@ button{
   font-size: 3vh;
   font-weight: bold;
 }
+
 #question_img{
   width: 60%;
   height: 30vh;
@@ -155,6 +156,7 @@ button{
   display: none;
   text-align: center;
   overflow: hidden;
+  margin-top: 2vh;
 }
 
 #question_line{
@@ -259,9 +261,32 @@ progress {
 }
 
 
+#timer_img{
+  display: inline-block;
+  vertical-align:top;
+  height: 5vh;
+  
+}
+
+.tanime{
+  animation: watch 0.3s linear infinite both;
+}
+
+@keyframes watch{
+  0%{transform: translate(0);}
+  20%{transform: translate(-2px,2px);}
+  40%{transform: translate(-2px,2px);}
+  60%{transform: translate(2px,2px);}
+  80%{transform: translate(2px,-2px);}
+  80%{transform: translate(0);}
+}
+
 #question_progress{
-  width: 80%;
+  width: 65%;
   margin-top: 2vh;
+  display: inline-block;
+  vertical-align: bottom;
+  margin: 0;
 }
 
 progress::-moz-progress-bar {
