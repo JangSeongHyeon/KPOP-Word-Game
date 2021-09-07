@@ -292,8 +292,7 @@ progress::-webkit-progress-bar {
 
 @media (min-width: 200px) and (max-width: 767px) {
   #question{
-    font-size: 1vh;
-    height: 30vh;
+    height: 35vh;
   }
   #question_img{
     height: 15vh;
