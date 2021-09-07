@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./main.png">
   <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
   <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
   <title>韓国語若者言葉QUIZ</title>
@@ -16,6 +17,7 @@
   <audio id='audio_play' src='./bgm.mp3'></audio>
   <audio id='ok_play' src='./ok.mp3'></audio>
   <audio id='no_play' src='./no.mp3'></audio>
+  <audio id='click_play' src="./click.mp3"></audio>
   <audio id='timer_play' src="./timer.MP3"></audio>
 
   <!-- 시작 페이지 -->
@@ -372,22 +374,22 @@
         document.getElementById("result_img").src = "LV4.png";
         document.getElementById("result_title").innerHTML = "Sランク"
         document.getElementById("result_progress").value = "100";
-        document.getElementById("result_explain").innerHTML = "あなたはSランクです"
+        document.getElementById("result_explain").innerHTML = "あなたは韓国語若者言葉Sランクです"
       } else if (score >= 7) {
         document.getElementById("result_img").src = "LV3.png";
         document.getElementById("result_title").innerHTML = "Aランク"
         document.getElementById("result_progress").value = "80";
-        document.getElementById("result_explain").innerHTML = "あなたはAランクです"
+        document.getElementById("result_explain").innerHTML = "あなたは韓国語若者言葉Aランクです"
       } else if (score >= 5) {
         document.getElementById("result_img").src = "LV2.png";
         document.getElementById("result_title").innerHTML = "Bランク"
         document.getElementById("result_progress").value = "60";
-        document.getElementById("result_explain").innerHTML = "あなたはBランクです"
+        document.getElementById("result_explain").innerHTML = "あなたは韓国語若者言葉Bランクです"
       } else {
         document.getElementById("result_img").src = "LV1.png";
         document.getElementById("result_title").innerHTML = "Cランク"
         document.getElementById("result_progress").value = "20";
-        document.getElementById("result_explain").innerHTML = "あなたはCランクです"
+        document.getElementById("result_explain").innerHTML = "あなたは韓国語若者言葉Cランクです"
       }
 
     }
