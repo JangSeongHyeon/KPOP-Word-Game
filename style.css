@@ -217,6 +217,9 @@ button{
   font-size: 8vh;
 }
 
+#contact_img{
+  height: 5vh;
+}
 
 #result_explain{
   color: #969696;
