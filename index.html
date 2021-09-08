@@ -5,37 +5,53 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="./main.png">
+  <link rel="shortcut icon" href="./img/main.png">
   <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
   <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+  
   <title>韓国語若者言葉QUIZ</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <audio id='audio_play' src='./bgm.mp3'></audio>
-  <audio id='ok_play' src='./ok.mp3'></audio>
-  <audio id='no_play' src='./no.mp3'></audio>
-  <audio id='click_play' src="./click.mp3"></audio>
-  <audio id='timer_play' src="./timer.MP3"></audio>
+  <audio id='audio_play' src='./audio/bgm.mp3'></audio>
+  <audio id='ok_play' src='./audio/ok.mp3'></audio>
+  <audio id='no_play' src='./audio/no.mp3'></audio>
+  <audio id='click_play' src="./audio/click.mp3"></audio>
+  <audio id='timer_play' src="./audio/timer.MP3"></audio>
 
   <!-- 시작 페이지 -->
   <div id="start_area">
     <div id="start_container">
       <h1 class="main_text" class="singleday">かんこくご</h1>
       <h1 class="main_text" class="singleday">若者言葉クイズ</h1>
-      <img id="start_img" src="./main.png" alt="">
+      <img id="start_img" src="./img/main.png" alt="">
       <button id="start_button">はじめる</button>
     </div>
   </div>
 
 
+  <!-- 난이도 선택 페이지 -->
   <div id="select_area">
-    <h1 id="select_exp">ステージを選択してください！！</h1>
+    <h1 id="sentaku">ステージを選択してください。</h1>
     <div id="select_buttons">
-      <button id="lv1button" class="sel_button" style="background-color: #C1FF6B;border: 1px solid #C1FF6B;">ステージ1</button>
-      <button id="lv2button" class="sel_button" style="background-color: #FFA147;border: 1px solid #FFA147;">ステージ2</button>
+      <div>
+        <button id="lv1button" class="sel_button" style="background-color: #C1FF6B;border: 1px solid #C1FF6B;">ステージ1</button>
+        <span class="selec_exp">한국어를 공부한지 얼마 안된 외국인들도 풀 수 있는 초급 스테이지 입니다.</span>
+      </div>
+
+      <div>
+        <button id="lv2button" class="sel_button" style="background-color: #FFA147;border: 1px solid #FFA147;">ステージ2</button>
+        <span class="selec_exp">평균적인 젊은 한국인 레벨에 해당하는 중급 스테이지 입니다.</span>
+      </div>
+      
+      <div>
+        <button id="lv3button" class="sel_button" style="background-color: red;border: 1px solid red;">ステージ3</button>
+        <span class="selec_exp">가장 높은 단계로 젊은 한국인 레벨을 넘어서는 고난도 스테이지 입니다.</span>
+      </div>
+
+
     </div>
   </div>
 
@@ -46,7 +62,7 @@
       <span id="score_line" style="color:#FF9B00;font-weight: bold;">0</span>
     </div>
     <div id="question_top">
-      <img id="timer_img" src="./timer.png" alt="">
+      <img id="timer_img" src="./img/timer.png" alt="">
       <progress id="question_progress" value="100" max="100"></progress>
     </div>
     <div id="question">
@@ -71,23 +87,24 @@
   <!-- 결과 페이지 -->
   <div id="result_area">
     <h5 id="level_text"></h5>
-    
-      <img id="result_img" src="" alt="">
-      <h2 id="result_title"></h2>
-      <progress id="result_progress" value="50" max="100"></progress>
-      <p id="result_explain"></p>
-      <div>
-        <button id="replay_button">再挑戦！</button>
-      </div>
-      <div>
-        <h5>contact to developer</h5>
-        <a href="https://www.instagram.com/sh_jang_0402/">
-          <img id="contact_img" src="./insta.png" alt="">
-        </a>
-        <p style="font-size: 1vh;color: #909090;">Copyright jangseonghyeon 2021. All Rights Reserved. </p>
-      </div>
+
+    <img id="result_img" src="" alt="">
+    <h2 id="result_title"></h2>
+    <progress id="result_progress" value="50" max="100"></progress>
+    <p id="result_explain"></p>
+    <div>
+      <button id="replay_button">再挑戦！</button>
+    </div>
+    <div>
+      <h5>contact to developer</h5>
+      <a href="https://www.instagram.com/sh_jang_0402/">
+        <img id="contact_img" src="./img/insta.png" alt="">
+      </a>
+      <p style="font-size: 1vh;color: #909090;">Copyright jangseonghyeon 2021. All Rights Reserved. </p>
+    </div>
 
   </div>
+
 
   <script>
     var bgmaudio = document.getElementById('audio_play');
@@ -97,8 +114,9 @@
     var timeraudio = document.getElementById('timer_play');
     const startButton = document.querySelector('#start_button');
     const answerButton1 = document.getElementsByClassName("answer_button")[0];
-    const lv1Button=document.getElementById('lv1button');
-    const lv2Button=document.getElementById('lv2button');
+    const lv1Button = document.getElementById('lv1button');
+    const lv2Button = document.getElementById('lv2button');
+    const lv3Button = document.getElementById('lv3button');
 
     answerButton1.addEventListener('click', next);
 
@@ -119,10 +137,10 @@
     let score = 0;
     let timer = 100;
     let myvar;
-    let level=1;
+    let level = 1;
     let timerbar = document.getElementById("question_progress");
-    var zIndex=9999;
-    var modal=document.getElementById('my_modal');
+    var zIndex = 9999;
+    var modal = document.getElementById('my_modal');
 
     var bg = document.createElement('div');
 
@@ -274,29 +292,112 @@
         answer: '알쓰'
       },
     }
-    
+
+
+    const questions3 = {
+      0: {
+        question: '「複雑な世界を楽に生きていこう」という意味の言葉は何でしょうか？',
+        0: '복세편살',
+        1: '오놀아놈',
+        2: '도란도란',
+        answer: '복세편살'
+      },
+      1: {
+        question: '「人によって違う」意味の言葉は？(hint:case by case)',
+        0: '케바케',
+        1: '사바사',
+        2: '히바히',
+        answer: '사바사'
+      },
+      2: {
+        question: 'アイスアアメリカーノの略語',
+        0: '아바라',
+        1: '아메',
+        2: '아아',
+        answer: '아아'
+      },
+      3: {
+        question: '「自然な出会いを求める」という意味の言葉は何でしょうか？',
+        0: '이거실화냐',
+        1: '자만추',
+        2: '가즈아',
+        answer: '자만추'
+      },
+      4: {
+        question: '「飾ってるような飾ってないような」の略語・自然の感じのおしゃれなスタイルを表す言葉は何でしょうか？',
+        0: '꾸안꾸',
+        1: '별다줄',
+        2: '버카충',
+        answer: '꾸안꾸'
+      },
+      5: {
+        question: '「それな」と同じ意味の言葉は何でしょうか？',
+        0: '아노',
+        1: '인정',
+        2: '레게노',
+        answer: '인정'
+      },
+      6: {
+        question: 'そとはカリッと中はじゅわっとしている食感の表現は何でしょうか？',
+        0: '제곧내',
+        1: '겉바속촉',
+        2: '진지충',
+        answer: '겉바속촉'
+      },
+      7: {
+        question: '「すぐに恋に落ちてしまう人」つまり惚れっぽい人のことです。',
+        0: '금사빠',
+        1: '잼민이',
+        2: '얼짱',
+        answer: '금사빠'
+      },
+      8: {
+        question: '知的でスマートな男性という意味の言葉は何でしょうか？',
+        0: '차도남',
+        1: '요섹남',
+        2: '뇌섹남',
+        answer: '뇌섹남'
+      },
+      9: {
+        question: 'お酒を飲めない人に使う言葉は何でしょうか？',
+        0: '술고래',
+        1: '알쓰',
+        2: '영끌',
+        answer: '알쓰'
+      },
+    }
+
+
 
     // 시작버튼 리스너
     startButton.addEventListener('click', event => {
       document.querySelector('#start_area').style.display = "none";
-      document.querySelector('#select_area').style.display="block";
+      document.querySelector('#select_area').style.display = "block";
       bgmaudio.play();
     });
 
 
     // 스테이지 1 버튼 리스너
-    lv1Button.addEventListener('click',event=>{
-      document.querySelector('#select_area').style.display="none";
-      document.querySelector('#question_area').style.display="block";
-      level=1;
+    lv1Button.addEventListener('click', event => {
+      document.querySelector('#select_area').style.display = "none";
+      document.querySelector('#question_area').style.display = "block";
+      level = 1;
       showViews();
     })
 
     // 스테이지 2 버튼 리스너
-    lv2Button.addEventListener('click',event=>{
-      document.querySelector('#select_area').style.display="none";
-      document.querySelector('#question_area').style.display="block";
-      level=2;
+    lv2Button.addEventListener('click', event => {
+      document.querySelector('#select_area').style.display = "none";
+      document.querySelector('#question_area').style.display = "block";
+      level = 2;
+      showViews();
+    })
+
+    // 스테이지 3 버튼 리스너
+    lv3Button.addEventListener('click', event => {
+      document.querySelector('#select_area').style.display = "none";
+      document.querySelector('#question_area').style.display = "block";
+      level = 3;
       showViews();
     })
 
@@ -307,26 +408,33 @@
         console.log('게임 끝');
         showResults();
       } else {
-        
+
         timeraudio.pause();
-        document.getElementById('q-number').innerHTML='Q'+(order+1);
+        document.getElementById('q-number').innerHTML = 'Q' + (order + 1);
         timerbar.style.setProperty("--c", "#B0F7FF");
-        
+
         // 레벨1 선택시
-        if(level==1){
+        if (level == 1) {
           document.getElementById('question_line').innerHTML = questions[order]['question'];
           document.getElementById("level_text").innerHTML = "ステージ1";
 
           for (var i = 0; i < 3; i++) {
             document.getElementsByClassName('answer_button')[i].innerHTML = questions[order][i];
           }
-      // 레벨2 선택시
-        }else{
+          // 레벨2 선택시
+        } else if(level == 2){
           document.getElementById('question_line').innerHTML = questions2[order]['question'];
           document.getElementById("level_text").innerHTML = "ステージ2";
 
           for (var i = 0; i < 3; i++) {
             document.getElementsByClassName('answer_button')[i].innerHTML = questions2[order][i];
+          }
+        }else{
+          document.getElementById('question_line').innerHTML = questions3[order]['question'];
+          document.getElementById("level_text").innerHTML = "ステージ3";
+
+          for (var i = 0; i < 3; i++) {
+            document.getElementsByClassName('answer_button')[i].innerHTML = questions3[order][i];
           }
         }
 
@@ -335,7 +443,7 @@
 
 
         timerbar.value = 100;
-        
+
 
         function frame() {
           if (counter <= 0) {
@@ -362,21 +470,25 @@
       clearInterval(myvar);
       if (event.target.textContent == questions[order].answer || event.target.textContent == questions2[order].answer) {
         showModal('right');
-        
+
         okaudio.play();
         score += 1;
-        document.getElementById('score_line').innerHTML=score+'0';
+        document.getElementById('score_line').innerHTML = score + '0';
         console.log('점수', score);
-      }else{
+      } else {
         showModal('wrong');
         noaudio.play();
       }
 
 
-      setTimeout(function() { closeModal()}, 1500);
-      setTimeout(function() { showViews()}, 1500);
+      setTimeout(function () {
+        closeModal()
+      }, 1500);
+      setTimeout(function () {
+        showViews()
+      }, 1500);
       order++;
-      
+
     }
 
 
@@ -384,25 +496,25 @@
     function showResults() {
       document.querySelector('#question_area').style.display = "none";
       document.querySelector('#result_area').style.display = "block";
-      document.querySelector('body').style.background="radial-gradient(circle, white, blue, violet)";
+      document.querySelector('body').style.background = "radial-gradient(circle, white, blue, violet)";
 
       if (score >= 9) {
-        document.getElementById("result_img").src = "LV4.png";
+        document.getElementById("result_img").src = "./img/LV4.png";
         document.getElementById("result_title").innerHTML = "Sランク"
         document.getElementById("result_progress").value = "100";
         document.getElementById("result_explain").innerHTML = "あなたは韓国語若者言葉Sランクです"
       } else if (score >= 7) {
-        document.getElementById("result_img").src = "LV3.png";
+        document.getElementById("result_img").src = "./img/LV3.png";
         document.getElementById("result_title").innerHTML = "Aランク"
         document.getElementById("result_progress").value = "80";
         document.getElementById("result_explain").innerHTML = "あなたは韓国語若者言葉Aランクです"
       } else if (score >= 5) {
-        document.getElementById("result_img").src = "LV2.png";
+        document.getElementById("result_img").src = "./img/LV2.png";
         document.getElementById("result_title").innerHTML = "Bランク"
         document.getElementById("result_progress").value = "60";
         document.getElementById("result_explain").innerHTML = "あなたは韓国語若者言葉Bランクです"
       } else {
-        document.getElementById("result_img").src = "LV1.png";
+        document.getElementById("result_img").src = "./img/LV1.png";
         document.getElementById("result_title").innerHTML = "Cランク"
         document.getElementById("result_progress").value = "20";
         document.getElementById("result_explain").innerHTML = "あなたは韓国語若者言葉Cランクです"
@@ -413,70 +525,70 @@
 
     // 재도전 
     function replay() {
-      document.body.style.backgroundImage = "url('./background2.png')";
+      document.body.style.backgroundImage = "url('./img/background2.png')";
       document.querySelector('#start_area').style.display = "block";
       document.querySelector('#result_area').style.display = "none";
-      document.getElementById('score_line').innerHTML=0;
+      document.getElementById('score_line').innerHTML = 0;
       score = 0;
       order = 0;
     }
 
 
     // 모달함수
-    function showModal(id){
-      
-      if(id=='right'){
-        document.getElementById("modal_img").src = "./right.png";
-      }else{
-        document.getElementById("modal_img").src = "./wrong.png";
+    function showModal(id) {
+
+      if (id == 'right') {
+        document.getElementById("modal_img").src = "./img/right.png";
+      } else {
+        document.getElementById("modal_img").src = "./img/wrong.png";
       }
       // 모달 div 뒤에 희꾸무레한 레이어
       bg.setStyle({
-        position:'fixed',
-        zIndex:zIndex,
-        left:'0px',
-        top:'0px',
-        width:'100%',
-        height:'100%',
-        overflow:'auto',
+        position: 'fixed',
+        zIndex: zIndex,
+        left: '0px',
+        top: '0px',
+        width: '100%',
+        height: '100%',
+        overflow: 'auto',
 
         // 레이어 색깔
-        backgroundColor:'rgba(0,0,0,0.4)'
+        backgroundColor: 'rgba(0,0,0,0.4)'
       });
       document.body.append(bg);
 
       modal.setStyle({
-          position: 'fixed',
-          display: 'block',
-          
-          // 시꺼먼 레이어 보다 한칸 위에 보이기
-          zIndex: zIndex + 1,
+        position: 'fixed',
+        display: 'block',
 
-          // div center 정렬
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          msTransform: 'translate(-50%, -50%)',
-          webkitTransform: 'translate(-50%, -50%)'
+        // 시꺼먼 레이어 보다 한칸 위에 보이기
+        zIndex: zIndex + 1,
+
+        // div center 정렬
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        msTransform: 'translate(-50%, -50%)',
+        webkitTransform: 'translate(-50%, -50%)'
       });
     }
 
 
     // 모달 닫기함수
     function closeModal() {
-        bg.remove();
-        modal.style.display = 'none';
+      bg.remove();
+      modal.style.display = 'none';
     };
 
     // Element 에 style 한번에 오브젝트로 설정하는 함수 추가
-    Element.prototype.setStyle = function(styles) {
-        for (var k in styles) this.style[k] = styles[k];
-        return this;
+    Element.prototype.setStyle = function (styles) {
+      for (var k in styles) this.style[k] = styles[k];
+      return this;
     };
 
 
 
-    
+
 
     // 무한재생
     bgmaudio.addEventListener('ended', function () {
@@ -484,7 +596,6 @@
       this.play();
     }, false);
   </script>
-
 </body>
 
 </html>
