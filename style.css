@@ -70,7 +70,7 @@ button{
 
 
 #sentaku{
-  font-size: 4vh;
+  font-size: 3vh;
 }
 
 #select_buttons{
@@ -79,7 +79,7 @@ button{
 }
 
 .selec_exp{
-  width: 35vw;
+  width: 50vw;
   font-size: 2vh;
   display: block;
   margin: 0 auto;
@@ -345,6 +345,13 @@ progress::-webkit-progress-bar {
   .answer_button{
     font-size:3vh;
   }
+
+  .sel_button{
+    width: 30vw;
+    font-size: 2vh;
+  }
+
+
 
 }
 
