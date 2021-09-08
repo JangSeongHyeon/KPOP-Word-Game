@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="jpr">
+<html lang="jp">
 
 <head>
   <meta charset="UTF-8">
@@ -28,7 +28,6 @@
       <img id="start_img" src="./main.png" alt="">
       <button id="start_button">はじめる</button>
     </div>
-    
   </div>
 
 
@@ -61,7 +60,10 @@
     </div>
   </div>
 
-
+  <!-- 모달창 -->
+  <div id="my_modal">
+    <img id="modal_img" src="" alt="">
+  </div>
 
   <!-- 결과 페이지 -->
   <div id="result_area">
@@ -116,6 +118,10 @@
     let myvar;
     let level=1;
     let timerbar = document.getElementById("question_progress");
+    var zIndex=9999;
+    var modal=document.getElementById('my_modal');
+
+    var bg = document.createElement('div');
 
 
 
@@ -275,6 +281,7 @@
     });
 
 
+    // 스테이지 1 버튼 리스너
     lv1Button.addEventListener('click',event=>{
       document.querySelector('#select_area').style.display="none";
       document.querySelector('#question_area').style.display="block";
@@ -282,6 +289,7 @@
       showViews();
     })
 
+    // 스테이지 2 버튼 리스너
     lv2Button.addEventListener('click',event=>{
       document.querySelector('#select_area').style.display="none";
       document.querySelector('#question_area').style.display="block";
@@ -350,21 +358,25 @@
     function next(event) {
       clearInterval(myvar);
       if (event.target.textContent == questions[order].answer || event.target.textContent == questions2[order].answer) {
+        showModal('right');
+        
         okaudio.play();
         score += 1;
         document.getElementById('score_line').innerHTML=score+'0';
         console.log('점수', score);
       }else{
+        showModal('wrong');
         noaudio.play();
       }
 
 
-
+      setTimeout(function() { closeModal()}, 1500);
       order++;
       showViews();
     }
 
 
+    // 결과보기
     function showResults() {
       document.querySelector('#question_area').style.display = "none";
       document.querySelector('#result_area').style.display = "block";
@@ -395,6 +407,7 @@
     }
 
 
+    // 재도전 
     function replay() {
       document.body.style.backgroundImage = "url('./background2.png')";
       document.querySelector('#start_area').style.display = "block";
@@ -404,6 +417,62 @@
       order = 0;
     }
 
+
+    // 모달함수
+    function showModal(id){
+      
+      if(id=='right'){
+        document.getElementById("modal_img").src = "./right.png";
+      }else{
+        document.getElementById("modal_img").src = "./wrong.png";
+      }
+      // 모달 div 뒤에 희꾸무레한 레이어
+      bg.setStyle({
+        position:'fixed',
+        zIndex:zIndex,
+        left:'0px',
+        top:'0px',
+        width:'100%',
+        height:'100%',
+        overflow:'auto',
+
+        // 레이어 색깔
+        backgroundColor:'rgba(0,0,0,0.4)'
+      });
+      document.body.append(bg);
+
+      modal.setStyle({
+          position: 'fixed',
+          display: 'block',
+          
+          // 시꺼먼 레이어 보다 한칸 위에 보이기
+          zIndex: zIndex + 1,
+
+          // div center 정렬
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          msTransform: 'translate(-50%, -50%)',
+          webkitTransform: 'translate(-50%, -50%)'
+      });
+    }
+
+
+    // 모달 닫기함수
+    function closeModal() {
+        bg.remove();
+        modal.style.display = 'none';
+    };
+
+    // Element 에 style 한번에 오브젝트로 설정하는 함수 추가
+    Element.prototype.setStyle = function(styles) {
+        for (var k in styles) this.style[k] = styles[k];
+        return this;
+    };
+
+
+
+    
 
     // 무한재생
     bgmaudio.addEventListener('ended', function () {
