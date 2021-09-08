@@ -130,7 +130,7 @@ button{
 
 /* question page */
 #q-number{
-  color: #2196f3;
+  color: #8b00ff;
   font-size: 3vh;
   font-weight: bold;
 }
@@ -138,6 +138,13 @@ button{
 #q10{
   font-size: 3vh;
   font-weight: bold;
+}
+
+#score_box{
+  width: 15%;
+  background-color: rgb(105, 91, 91);
+  margin: 0 auto;
+  border-radius: 3px;
 }
 
 #question_img{

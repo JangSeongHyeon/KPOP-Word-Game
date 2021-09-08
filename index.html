@@ -41,14 +41,17 @@
 
   <!-- 문제 페이지 -->
   <div id="question_area">
-    <span id="q-number"></span>
-    <span id="q10"> / Q10</span>
+    <h3>SCORE</h3>
+    <div id="score_box">
+      <span id="score_line" style="color:#FF9B00;font-weight: bold;">0</span>
+    </div>
     <div id="question_top">
       <img id="timer_img" src="./timer.png" alt="">
       <progress id="question_progress" value="100" max="100"></progress>
     </div>
     <div id="question">
-      <h3>SCORE</h3><span id="score_line" style="color:#FF9B00;font-weight: bold;">0</span>
+      <span id="q-number"></span>
+      <span id="q10"> / Q10</span>
       <p id="question_line"></p>
     </div>
 
@@ -371,8 +374,9 @@
 
 
       setTimeout(function() { closeModal()}, 1500);
+      setTimeout(function() { showViews()}, 1500);
       order++;
-      showViews();
+      
     }
 
 
