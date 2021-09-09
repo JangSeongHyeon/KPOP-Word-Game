@@ -360,6 +360,7 @@ progress::-webkit-progress-bar {
 
   .sbutton_area{
     width: 60%;
+    margin-top: 4%;
   }
 
   #question_line {
