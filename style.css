@@ -97,14 +97,21 @@ button{
   height: 90%;
 }
 
-.selec_exp{
-  width: 50vw;
-  font-size: 2vh;
-  display: block;
+#exp_box{
+  width: 70%;
+  
   margin: 0 auto;
-  margin-top: 2vh;
-  margin-bottom: 6vh;
-  color: #969696;;
+}
+#selec_exp{
+  
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 1%;
+  font-size: 2vh;
+  color: #FF92B1;
+  background-color: #FFFF8C;
+  border-radius: 5px;
   font-weight: bold;
   
 }
