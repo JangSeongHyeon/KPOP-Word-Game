@@ -85,6 +85,9 @@
 
   <!-- 결과 페이지 -->
   <div id="result_area">
+    <div>
+      <h3 class="nico">韓国語若者言葉 QUIZ</h3>
+    </div>
     <h5 id="level_text"></h5>
 
     <img id="result_img" src="" alt="">
@@ -113,9 +116,9 @@
     var timeraudio = document.getElementById('timer_play');
     const startButton = document.querySelector('#start_button');
     const answerButton1 = document.getElementsByClassName("answer_button")[0];
-    const lv1Button = document.getElementById('lv1button');
-    const lv2Button = document.getElementById('lv2button');
-    const lv3Button = document.getElementById('lv3button');
+    const lv1Button = document.getElementById('sbutton_area1');
+    const lv2Button = document.getElementById('sbutton_area2');
+    const lv3Button = document.getElementById('sbutton_area3');
 
     answerButton1.addEventListener('click', next);
 
@@ -147,7 +150,7 @@
 
     const questions = {
       0: {
-        question: '「陽キャ」と同じ意味の韓国語の表現は？',
+        question: '「陽キャ」と同じ意味の韓国語の表現は何でしょうか？',
         0: '인싸',
         1: '아싸',
         2: '컴싸',
@@ -203,11 +206,11 @@
         answer: 'TMI'
       },
       8: {
-        question: '「きもい」という意味の言葉は何でしょうか？',
-        0: '극찬',
-        1: '극혐',
-        2: '극한',
-        answer: '극혐'
+        question: '「やばい」という意味の言葉は何でしょうか？',
+        0: '허걱',
+        1: '대박',
+        2: '헐',
+        answer: '대박'
       },
       9: {
         question: '「推し」という意味の言葉は何でしょうか？',
@@ -221,11 +224,11 @@
 
     const questions2 = {
       0: {
-        question: 'びっくりする ',
-        0: '깜짝쇼',
+        question: '「華金」という意味の言葉は何でしょうか？ ',
+        0: '불금',
         1: '깜놀',
-        2: '깡',
-        answer: '깜놀'
+        2: '공금',
+        answer: '불금'
       },
       1: {
         question: '「人によって違う」意味の言葉は？(hint:case by case)',
@@ -235,21 +238,21 @@
         answer: '사바사'
       },
       2: {
-        question: 'アイスアアメリカーノの略語',
+        question: '「アイスアアメリカーノ」の略語で使われる言葉は何でしょうか？',
         0: '아바라',
         1: '아메',
         2: '아아',
         answer: '아아'
       },
       3: {
-        question: '引きこもる ',
-        0: '홍콩',
-        1: '방콕',
-        2: '코방',
-        answer: '방콕'
+        question: '「きもい」という意味の言葉は何でしょうか？ ',
+        0: '극혐',
+        1: '극찬',
+        2: '극구',
+        answer: '극혐'
       },
       4: {
-        question: '誕生日プレゼント ',
+        question: '「誕生日プレゼント」の略語で使われる言葉は何でしょうか？',
         0: '쌈박',
         1: '생선',
         2: '생파',
@@ -260,21 +263,21 @@
         0: '갑분싸',
         1: '갑분띠',
         2: '갑분조',
-        answer: '인정'
+        answer: '갑분싸'
       },
       6: {
-        question: 'うっぴん ',
+        question: '「すっぴん」という意味の言葉は何でしょうか？ ',
         0: '쌍얼',
         1: '쌩얼',
         2: '아얼',
         answer: '쌩얼'
       },
       7: {
-        question: '여자에 미친새끼를 일컫는말',
-        0: '여미새',
-        1: '남미새',
-        2: '미새',
-        answer: '여미새'
+        question: '付き合ってないけどいい感じという意味の言葉は何でしょうか？',
+        0: '썸',
+        1: '단짠',
+        2: '핑프',
+        answer: '썸'
       },
       8: {
         question: '知的でスマートな男性という意味の言葉は何でしょうか？',
@@ -302,14 +305,14 @@
         answer: '복세편살'
       },
       1: {
-        question: '코로나 19를 일컫는말',
-        0: '코로스나',
+        question: '「コロナ過」と同じ意味の若者言葉は何でしょうか？',
+        0: '코로나',
         1: '코시국',
         2: '코로코로',
         answer: '반모'
       },
       2: {
-        question: '할 말은 많지만 하지 않는다',
+        question: '「言いたいことは多いけど、言わない」という意味の言葉は何でしょうか？',
         0: '아바라',
         1: '국룰',
         2: '할많하않',
@@ -330,7 +333,7 @@
         answer: '꾸안꾸'
       },
       5: {
-        question: '슬리퍼를 신고 가볍게 돌아다닐 수 있는 곳',
+        question: '「スリッパを履いて気軽に歩き回れるところ」という意味の言葉は何でしょうか？',
         0: '슬세권',
         1: '슬동네',
         2: '슬라임',
@@ -351,14 +354,14 @@
         answer: '금사빠'
       },
       8: {
-        question: '온라인 상에서 자신의 힘을 과장하지만 , 실제로는 힘이 없고 무기력한 인물',
+        question: '「ネット上では自分の力を誇張するが、実際は力がなく無気力な人」という意味の言葉は何でしょうか？',
         0: '괄도네넴띤',
         1: '아묻따',
         2: '방구석여포',
         answer: '방구석여포'
       },
       9: {
-        question: '이번 생은 망했다',
+        question: '「今回の人生は失敗した」という意味の言葉は何でしょうか？',
         0: '롬곡',
         1: '이생망',
         2: '오놀아놈',
@@ -467,7 +470,7 @@
     // 다음페이지로 가기
     function next(event) {
       clearInterval(myvar);
-      if (event.target.textContent == questions[order].answer || event.target.textContent == questions2[order].answer) {
+      if (event.target.textContent == questions[order].answer || event.target.textContent == questions2[order].answer || event.target.textContent == questions3[order].answer) {
         showModal('right');
 
         okaudio.play();
