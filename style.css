@@ -75,7 +75,8 @@ button{
 }
 
 .simg{
-  height: 100%;
+  width: 30%;
+  height: 90%;
 }
 
 
@@ -346,7 +347,11 @@ progress::-webkit-progress-bar {
 }
 
 @media (min-width: 200px) and (max-width: 767px) {
-  
+
+  .sbutton_area{
+    width: 60%;
+  }
+
   #question_line {
     margin-top: 5vh;
   }
