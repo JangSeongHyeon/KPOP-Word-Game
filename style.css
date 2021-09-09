@@ -353,7 +353,8 @@ progress::-webkit-progress-bar {
 @media (min-width: 200px) and (max-width: 767px) {
 
   #selec_exp{
-    width: 65%;
+    width: 70%;
+    margin-top: 2%;
   }
 
 
