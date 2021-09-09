@@ -352,6 +352,11 @@ progress::-webkit-progress-bar {
 
 @media (min-width: 200px) and (max-width: 767px) {
 
+  #selec_exp{
+    width: 65%;
+  }
+
+
   .sbutton_area{
     width: 60%;
   }
