@@ -4,6 +4,10 @@ h3, body{
   font-family:'M PLUS 1p'
 }
 
+h4{
+  margin: 0;
+}
+
 
 body{
   height: 100%;
@@ -61,10 +65,26 @@ button{
   overflow: hidden;
 }
 
+
+.sbutton_area{
+  width: 40%;
+  height: 30%;
+  margin: 0 auto;
+  margin-bottom: 2%;
+  border-radius: 10px;
+}
+
+.simg{
+  height: 100%;
+}
+
+
 #select_area{
   display: none;
+  
   overflow: hidden;
   text-align: center;
+  height: 100%;
 }
 
 
@@ -74,8 +94,9 @@ button{
 }
 
 #select_buttons{
-  margin-top: 7vh;
-
+  height: 90%;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .selec_exp{
@@ -90,22 +111,9 @@ button{
   
 }
 
-.sel_button{
-  width: 25vw;
-  height: 10vh;
-  font-size: 3vh;
-  margin-top: 2vh;
-}
-
 #start_container{
   text-align: center;
   margin-top: 10vh;
-}
-
-
-#start_explain{
-  color: #909090;
-  font-size:15px;
 }
 
 #start_img{
@@ -345,13 +353,6 @@ progress::-webkit-progress-bar {
   .answer_button{
     font-size:3vh;
   }
-
-  .sel_button{
-    width: 30vw;
-    font-size: 2vh;
-  }
-
-
 
 }
 
