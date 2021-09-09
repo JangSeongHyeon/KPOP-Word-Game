@@ -70,18 +70,18 @@ button{
   width: 40%;
   height: 30%;
   margin: 0 auto;
-  margin-bottom: 2%;
+  margin-top: 2%;
   border-radius: 10px;
 }
 
 .simg{
   height: 90%;
+  margin-top: 2%;
 }
 
 
 #select_area{
   display: none;
-  
   overflow: hidden;
   text-align: center;
   height: 100%;
@@ -95,8 +95,6 @@ button{
 
 #select_buttons{
   height: 90%;
-  margin-top: 1%;
-  margin-bottom: 1%;
 }
 
 .selec_exp{
