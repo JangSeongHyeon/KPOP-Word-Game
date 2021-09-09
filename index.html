@@ -11,6 +11,9 @@
   
   <title>韓国語若者言葉QUIZ</title>
   <link rel="stylesheet" href="style.css">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6139c6aee8e8571e"></script> -->
+
 </head>
 
 <body>
@@ -98,10 +101,15 @@
       <button id="replay_button">再挑戦！</button>
     </div>
     <div>
-      <h5>contact to developer</h5>
+      <h5>このアプリを友達に進める！</h5>
+      <!-- <div class="addthis_inline_share_toolbox"></div> -->
+    </div>
+    
+    <div>
+      <!-- <h5>contact to developer</h5>
       <a href="https://www.instagram.com/sh_jang_0402/">
         <img id="contact_img" src="./img/insta.png" alt="">
-      </a>
+      </a> -->
       <p style="font-size: 1vh;color: #909090;">Copyright jangseonghyeon 2021. All Rights Reserved. </p>
     </div>
 
@@ -109,9 +117,11 @@
 
 
   <script>
+
     var bgmaudio = document.getElementById('audio_play');
     var okaudio = document.getElementById('ok_play');
     var noaudio = document.getElementById('no_play');
+    var clickaudio = document.getElementById('click_play');
 
     var timeraudio = document.getElementById('timer_play');
     const startButton = document.querySelector('#start_button');
@@ -373,6 +383,7 @@
 
     // 시작버튼 리스너
     startButton.addEventListener('click', event => {
+      clickaudio.play();
       document.querySelector('#start_area').style.display = "none";
       document.querySelector('#select_area').style.display = "block";
       bgmaudio.play();
@@ -384,6 +395,7 @@
       document.querySelector('#select_area').style.display = "none";
       document.querySelector('#question_area').style.display = "block";
       level = 1;
+      clickaudio.play();
       showViews();
     })
 
@@ -392,6 +404,7 @@
       document.querySelector('#select_area').style.display = "none";
       document.querySelector('#question_area').style.display = "block";
       level = 2;
+      clickaudio.play();
       showViews();
     })
 
@@ -400,6 +413,7 @@
       document.querySelector('#select_area').style.display = "none";
       document.querySelector('#question_area').style.display = "block";
       level = 3;
+      clickaudio.play();
       showViews();
     })
 
@@ -484,10 +498,8 @@
 
 
       setTimeout(function () {
-        closeModal()
-      }, 1500);
-      setTimeout(function () {
-        showViews()
+        closeModal();
+        showViews();
       }, 1500);
       order++;
 
@@ -530,6 +542,7 @@
       document.body.style.backgroundImage = "url('./img/background2.png')";
       document.querySelector('#start_area').style.display = "block";
       document.querySelector('#result_area').style.display = "none";
+      clickaudio.play();
       document.getElementById('score_line').innerHTML = 0;
       score = 0;
       order = 0;
@@ -540,6 +553,7 @@
     function showModal(id) {
 
       if (id == 'right') {
+
         document.getElementById("modal_img").src = "./img/right.png";
       } else {
         document.getElementById("modal_img").src = "./img/wrong.png";
