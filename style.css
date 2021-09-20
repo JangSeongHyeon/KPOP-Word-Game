@@ -126,6 +126,10 @@ button{
   margin-top: 8vh;
 }
 
+#text_img{
+  height: 25vh;
+}
+
 
 #start_button{
   width: 180px;
